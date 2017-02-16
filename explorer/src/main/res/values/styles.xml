@@ -6,8 +6,8 @@
         <item name="windowActionModeOverlay">true</item>
 
         <!-- android colors -->
-        <item name="colorPrimary">@color/light_color_primary</item>
-        <item name="colorPrimaryDark">@color/light_color_primaryDark</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="android:windowBackground">@color/holo_light_window_background</item>
 
         <!-- custom colors -->
@@ -36,8 +36,8 @@
         <item name="windowActionModeOverlay">true</item>
 
         <!-- android colors -->
-        <item name="colorPrimary">@color/dark_color_primary</item>
-        <item name="colorPrimaryDark">@color/dark_color_primaryDark</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="android:windowBackground">@color/holo_dark_window_background</item>
 
         <!-- custom colors -->

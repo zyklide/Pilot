@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_dark">#303F9F</color>
     <color name="gray">#aaa</color>
 
-    <!-- ligth theme -->
+    <!-- light theme -->
     <color name="light_bookmark_bg">#fbfbfb</color>
     <color name="light_color_primary">#e0e0e0</color>
     <color name="light_color_primaryDark">#212121</color>
