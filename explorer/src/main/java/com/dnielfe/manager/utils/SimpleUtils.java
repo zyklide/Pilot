@@ -57,7 +57,6 @@ public class SimpleUtils {
                 } else if (check.isDirectory()) {
                     if (name.toLowerCase().contains(fileName.toLowerCase())) {
                         n.add(check.getPath());
-
                         // change this!
                     } else if (check.canRead() && !dir.equals("/")) {
                         search_file(check.getAbsolutePath(), fileName, n);
@@ -88,7 +87,7 @@ public class SimpleUtils {
         if (file.exists() && file.canRead()) {
             String[] list = file.list();
 
-            // add files/folder to ArrayList depending on hidden status
+            // add file to ArrayList depending on hidden status
             for (String aList : list) {
                 if (!showhidden) {
                     if (aList.charAt(0) != '.')

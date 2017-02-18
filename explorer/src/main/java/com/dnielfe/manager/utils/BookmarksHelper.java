@@ -12,13 +12,13 @@ import java.util.List;
 
 public class BookmarksHelper extends SQLiteOpenHelper {
 
-    // Database Version
+    // version
     private static final int DATABASE_VERSION = 1;
-    // Database Name
+    // name
     private static final String DATABASE_NAME = "BookmarksDB";
-    // Books table name
+    // table name
     private static final String TABLE_BOOKS = "bookmarks";
-    // Books Table Columns names
+    // column names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_PATH = "path";
@@ -29,7 +29,7 @@ public class BookmarksHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // SQL statement to create book table
+        // statement to create book table
         String CREATE_BOOK_TABLE = "CREATE TABLE " + TABLE_BOOKS + " (id " +
                 "INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, path Text)";
 
@@ -37,15 +37,9 @@ public class BookmarksHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_BOOK_TABLE);
 
         // add user directory
-        addBookmarkOnCreate(db, new Bookmark("SDCard", Environment.getExternalStorageDirectory().getPath()));
+        addBookmarkOnCreate(db, new Bookmark("Internal", Environment.getExternalStorageDirectory().getPath()));
         // add root directory
         addBookmarkOnCreate(db, new Bookmark("Root", "/"));
-        // add system directory
-        addBookmarkOnCreate(db, new Bookmark("System", Environment.getRootDirectory().getPath()));
-        // add external storage directory if exists
-        if (Environment.getExternalStorageDirectory().getPath() != null) {
-            addBookmarkOnCreate(db, new Bookmark("System", Environment.getExternalStorageDirectory().getPath()));
-        }
     }
 
     @Override
@@ -62,7 +56,7 @@ public class BookmarksHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
-        // go over each row, build book and add it to list
+        // build each book and add it to list
         Bookmark book;
         if (cursor.moveToFirst()) {
             do {
