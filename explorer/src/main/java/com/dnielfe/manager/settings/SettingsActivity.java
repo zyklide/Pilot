@@ -19,7 +19,6 @@ public class SettingsActivity extends ThemableActivity {
         // set up ActionBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -38,7 +37,6 @@ public class SettingsActivity extends ThemableActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
-
             case android.R.id.home:
                 this.finish();
                 Intent i = new Intent(getBaseContext(), BrowserActivity.class);

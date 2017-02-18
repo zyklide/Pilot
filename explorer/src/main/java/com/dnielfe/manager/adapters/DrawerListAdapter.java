@@ -16,7 +16,7 @@ public class DrawerListAdapter extends BaseAdapter {
     public DrawerListAdapter(final Context context) {
         this.mContext = context;
         this.mTitle = context.getResources().getStringArray(
-                R.array.drawerTitles_array);
+                R.array.drawer_title_array);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
