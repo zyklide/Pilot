@@ -36,12 +36,16 @@ public class BookmarksHelper extends SQLiteOpenHelper {
         // create books table
         db.execSQL(CREATE_BOOK_TABLE);
 
-        // add SDCard bookmark at start
+        // add user directory
         addBookmarkOnCreate(db, new Bookmark("SDCard", Environment.getExternalStorageDirectory().getPath()));
-        // add root bookmark at start
+        // add root directory
         addBookmarkOnCreate(db, new Bookmark("Root", "/"));
-        // add system bookmark at start
+        // add system directory
         addBookmarkOnCreate(db, new Bookmark("System", Environment.getRootDirectory().getPath()));
+        // add external storage directory if exists
+        if (Environment.getExternalStorageDirectory().getPath() != null) {
+            addBookmarkOnCreate(db, new Bookmark("System", Environment.getExternalStorageDirectory().getPath()));
+        }
     }
 
     @Override
