@@ -13,38 +13,38 @@ import com.dnielfe.manager.tasks.DeleteTask;
 
 public final class DeleteFilesDialog extends DialogFragment {
 
-    private static String[] files;
+  private static String[] files;
 
-    public static DialogFragment instantiate(String[] files1) {
-        files = files1;
-        return new DeleteFilesDialog();
-    }
+  public static DialogFragment instantiate(String[] files1) {
+    files = files1;
+    return new DeleteFilesDialog();
+  }
 
-    @Override
-    public Dialog onCreateDialog(Bundle state) {
-        final Activity a = getActivity();
-        final int size = files.length;
+  @Override
+  public Dialog onCreateDialog(Bundle state) {
+    final Activity a = getActivity();
+    final int size = files.length;
 
-        final AlertDialog.Builder b = new AlertDialog.Builder(a);
-        b.setTitle(String.valueOf(size) + getString(R.string._files));
-        b.setMessage(R.string.cannotbeundoneareyousureyouwanttodelete);
-        b.setPositiveButton(R.string.delete,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        final DeleteTask task = new DeleteTask(a);
-                        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
-                                files);
-                    }
-                });
-        b.setNegativeButton(R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        return b.create();
-    }
+    final AlertDialog.Builder b = new AlertDialog.Builder(a);
+    b.setTitle(String.valueOf(size) + getString(R.string._files));
+    b.setMessage(R.string.cannotbeundoneareyousureyouwanttodelete);
+    b.setPositiveButton(R.string.delete,
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+            final DeleteTask task = new DeleteTask(a);
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+                files);
+          }
+        });
+    b.setNegativeButton(R.string.cancel,
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+          }
+        });
+    return b.create();
+  }
 }

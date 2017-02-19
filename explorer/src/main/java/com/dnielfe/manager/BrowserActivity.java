@@ -23,8 +23,8 @@ import com.dnielfe.manager.adapters.BrowserTabsAdapter;
 import com.dnielfe.manager.fragments.BrowserFragment;
 
 public final class BrowserActivity extends AbstractBrowserActivity {
-    @Override
-    public BrowserFragment getCurrentBrowserFragment() {
-        return BrowserTabsAdapter.getCurrentBrowserFragment();
-    }
+  @Override
+  public BrowserFragment getCurrentBrowserFragment() {
+    return BrowserTabsAdapter.getCurrentBrowserFragment();
+  }
 }

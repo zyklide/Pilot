@@ -35,227 +35,227 @@ import java.io.File;
 import java.util.Locale;
 
 public abstract class AbstractBrowserActivity extends ThemableActivity implements
-        DirectoryNavigationView.OnNavigateListener, BrowserFragment.onUpdatePathListener {
+    DirectoryNavigationView.OnNavigateListener, BrowserFragment.onUpdatePathListener {
 
-    public static final String EXTRA_SHORTCUT = "shortcut_path";
-    public static final String TAG_DIALOG = "dialog";
+  public static final String EXTRA_SHORTCUT = "shortcut_path";
+  public static final String TAG_DIALOG = "dialog";
 
-    private static MergeAdapter mMergeAdapter;
-    private static BookmarksAdapter mBookmarksAdapter;
-    private static DrawerListAdapter mMenuAdapter;
-    private static DirectoryNavigationView mNavigation;
+  private static MergeAdapter mMergeAdapter;
+  private static BookmarksAdapter mBookmarksAdapter;
+  private static DrawerListAdapter mMenuAdapter;
+  private static DirectoryNavigationView mNavigation;
 
-    private static ListView mDrawer;
-    private static DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private Toolbar toolbar;
+  private static ListView mDrawer;
+  private static DrawerLayout mDrawerLayout;
+  private ActionBarDrawerToggle mDrawerToggle;
+  private Toolbar toolbar;
 
-    private FragmentManager fm;
+  private FragmentManager fm;
 
-    public abstract AbstractBrowserFragment getCurrentBrowserFragment();
+  public abstract AbstractBrowserFragment getCurrentBrowserFragment();
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_browser);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_browser);
 
-        checkPermissions();
-        initRequiredComponents();
-        initToolbar();
-        initDrawer();
-        initViewPager();
+    checkPermissions();
+    initRequiredComponents();
+    initToolbar();
+    initDrawer();
+    initViewPager();
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    final Fragment f = fm.findFragmentByTag(TAG_DIALOG);
+
+    if (f != null) {
+      fm.beginTransaction().remove(f).commit();
+      fm.executePendingTransactions();
     }
+  }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        final Fragment f = fm.findFragmentByTag(TAG_DIALOG);
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
 
-        if (f != null) {
-            fm.beginTransaction().remove(f).commit();
-            fm.executePendingTransactions();
-        }
-    }
+    if (mNavigation != null)
+      mNavigation.removeOnNavigateListener(this);
+  }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+  @Override
+  public void onTrimMemory(int level) {
+    IconPreview.clearCache();
+  }
 
-        if (mNavigation != null)
-            mNavigation.removeOnNavigateListener(this);
-    }
+  private void initRequiredComponents() {
+    fm = getFragmentManager();
+    mNavigation = new DirectoryNavigationView(this);
 
-    @Override
-    public void onTrimMemory(int level) {
-        IconPreview.clearCache();
-    }
+    // add listener for navigation view
+    if (mNavigation.listeners.isEmpty())
+      mNavigation.addonNavigateListener(this);
 
-    private void initRequiredComponents() {
-        fm = getFragmentManager();
-        mNavigation = new DirectoryNavigationView(this);
+    // start IconPreview class to get thumbnails if BrowserListAdapter
+    // request them
+    new IconPreview(this);
+  }
 
-        // add listener for navigation view
-        if (mNavigation.listeners.isEmpty())
-            mNavigation.addonNavigateListener(this);
+  protected void initToolbar() {
+    toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+  }
 
-        // start IconPreview class to get thumbnails if BrowserListAdapter
-        // request them
-        new IconPreview(this);
-    }
+  protected void initDrawer() {
+    setupDrawer();
+    initDrawerList();
+  }
 
-    protected void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
+  protected void initViewPager() {
+    // Instantiate a ViewPager and a PagerAdapter.
+    ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+    BrowserTabsAdapter mPagerAdapter = new BrowserTabsAdapter(fm);
+    mPager.setAdapter(mPagerAdapter);
 
-    protected void initDrawer() {
-        setupDrawer();
-        initDrawerList();
-    }
+    PageIndicator mIndicator = (PageIndicator) findViewById(R.id.indicator);
+    mIndicator.setViewPager(mPager);
+    mIndicator.setFades(false);
+  }
 
-    protected void initViewPager() {
-        // Instantiate a ViewPager and a PagerAdapter.
-        ViewPager mPager = (ViewPager) findViewById(R.id.pager);
-        BrowserTabsAdapter mPagerAdapter = new BrowserTabsAdapter(fm);
-        mPager.setAdapter(mPagerAdapter);
+  private void setupDrawer() {
+    mDrawer = (ListView) findViewById(R.id.left_drawer);
 
-        PageIndicator mIndicator = (PageIndicator) findViewById(R.id.indicator);
-        mIndicator.setViewPager(mPager);
-        mIndicator.setFades(false);
-    }
+    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+    mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
+        R.string.drawer_open, R.string.drawer_close) {
+      @Override
+      public void onDrawerOpened(View drawerView) {
+        supportInvalidateOptionsMenu();
+      }
 
-    private void setupDrawer() {
-        mDrawer = (ListView) findViewById(R.id.left_drawer);
+      @Override
+      public void onDrawerClosed(View view) {
+        supportInvalidateOptionsMenu();
+      }
+    };
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
-                R.string.drawer_open, R.string.drawer_close) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                supportInvalidateOptionsMenu();
-            }
+    mDrawerLayout.addDrawerListener(mDrawerToggle);
+  }
 
-            @Override
-            public void onDrawerClosed(View view) {
-                supportInvalidateOptionsMenu();
-            }
-        };
+  private void initDrawerList() {
+    mBookmarksAdapter = new BookmarksAdapter(this);
+    mMenuAdapter = new DrawerListAdapter(this);
 
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-    }
+    // create MergeAdapter to combine multiple adapter
+    mMergeAdapter = new MergeAdapter();
+    mMergeAdapter.addAdapter(mBookmarksAdapter);
+    mMergeAdapter.addAdapter(mMenuAdapter);
 
-    private void initDrawerList() {
-        mBookmarksAdapter = new BookmarksAdapter(this);
-        mMenuAdapter = new DrawerListAdapter(this);
+    mDrawer.setAdapter(mMergeAdapter);
+    mDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mMergeAdapter.getAdapter(position).equals(mBookmarksAdapter)) {
 
-        // create MergeAdapter to combine multiple adapter
-        mMergeAdapter = new MergeAdapter();
-        mMergeAdapter.addAdapter(mBookmarksAdapter);
-        mMergeAdapter.addAdapter(mMenuAdapter);
-
-        mDrawer.setAdapter(mMergeAdapter);
-        mDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mMergeAdapter.getAdapter(position).equals(mBookmarksAdapter)) {
-
-                    // handle bookmark items
-                    if (mDrawerLayout.isDrawerOpen(mDrawer))
-                        mDrawerLayout.closeDrawer(mDrawer);
-
-                    File file = new File(mBookmarksAdapter.getItem(position).getPath());
-                    getCurrentBrowserFragment().onBookmarkClick(file);
-                } else if (mMergeAdapter.getAdapter(position).equals(mMenuAdapter)) {
-                    // handle menu items
-                    switch ((int) mMergeAdapter.getItemId(position)) {
-                        case 0:
-                            Intent intent2 = new Intent(AbstractBrowserActivity.this,
-                                    SettingsActivity.class);
-                            startActivity(intent2);
-                            break;
-                        case 1:
-                            finish();
-                    }
-                }
-            }
-        });
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (mDrawerLayout.isDrawerOpen(mDrawer)) {
-                    mDrawerLayout.closeDrawer(mDrawer);
-                } else {
-                    mDrawerLayout.openDrawer(mDrawer);
-                }
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public static boolean isDrawerOpen() {
-        return mDrawerLayout.isDrawerOpen(mDrawer);
-    }
-
-    public static BookmarksAdapter getBookmarksAdapter() {
-        return mBookmarksAdapter;
-    }
-
-    @Override
-    public boolean onKeyDown(int keycode, @NonNull KeyEvent event) {
-        if (keycode != KeyEvent.KEYCODE_BACK)
-            return false;
-
-        if (isDrawerOpen()) {
+          // handle bookmark items
+          if (mDrawerLayout.isDrawerOpen(mDrawer))
             mDrawerLayout.closeDrawer(mDrawer);
-            return true;
+
+          File file = new File(mBookmarksAdapter.getItem(position).getPath());
+          getCurrentBrowserFragment().onBookmarkClick(file);
+        } else if (mMergeAdapter.getAdapter(position).equals(mMenuAdapter)) {
+          // handle menu items
+          switch ((int) mMergeAdapter.getItemId(position)) {
+            case 0:
+              Intent intent2 = new Intent(AbstractBrowserActivity.this,
+                  SettingsActivity.class);
+              startActivity(intent2);
+              break;
+            case 1:
+              finish();
+          }
         }
-        return getCurrentBrowserFragment().onBackPressed();
-    }
+      }
+    });
+  }
 
-    @Override
-    public void onNavigate(String path) {
-        getCurrentBrowserFragment().onNavigate(path);
-    }
+  @Override
+  protected void onPostCreate(Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
+    mDrawerToggle.syncState();
+  }
 
-    @Override
-    public void onUpdatePath(String path) {
-        mNavigation.setDirectoryButtons(path);
-    }
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    mDrawerToggle.onConfigurationChanged(newConfig);
+  }
 
-    private void checkPermissions() {
-        PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(this, new PermissionsResultAction() {
-            @Override
-            public void onGranted() {
-            }
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        if (mDrawerLayout.isDrawerOpen(mDrawer)) {
+          mDrawerLayout.closeDrawer(mDrawer);
+        } else {
+          mDrawerLayout.openDrawer(mDrawer);
+        }
+        return true;
 
-            @Override
-            public void onDenied(String permission) {
-                String message = String.format(Locale.getDefault(), getString(R.string.message_denied), permission);
-                Toast.makeText(AbstractBrowserActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-        });
+      default:
+        return super.onOptionsItemSelected(item);
     }
+  }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
+  public static boolean isDrawerOpen() {
+    return mDrawerLayout.isDrawerOpen(mDrawer);
+  }
+
+  public static BookmarksAdapter getBookmarksAdapter() {
+    return mBookmarksAdapter;
+  }
+
+  @Override
+  public boolean onKeyDown(int keycode, @NonNull KeyEvent event) {
+    if (keycode != KeyEvent.KEYCODE_BACK)
+      return false;
+
+    if (isDrawerOpen()) {
+      mDrawerLayout.closeDrawer(mDrawer);
+      return true;
     }
+    return getCurrentBrowserFragment().onBackPressed();
+  }
+
+  @Override
+  public void onNavigate(String path) {
+    getCurrentBrowserFragment().onNavigate(path);
+  }
+
+  @Override
+  public void onUpdatePath(String path) {
+    mNavigation.setDirectoryButtons(path);
+  }
+
+  private void checkPermissions() {
+    PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(this, new PermissionsResultAction() {
+      @Override
+      public void onGranted() {
+      }
+
+      @Override
+      public void onDenied(String permission) {
+        String message = String.format(Locale.getDefault(), getString(R.string.message_denied), permission);
+        Toast.makeText(AbstractBrowserActivity.this, message, Toast.LENGTH_SHORT).show();
+      }
+    });
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
+  }
 }
