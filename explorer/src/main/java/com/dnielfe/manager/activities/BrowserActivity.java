@@ -17,8 +17,9 @@
  * MA  02110-1301, USA.
  */
 
-package com.dnielfe.manager;
+package com.dnielfe.manager.activities;
 
+import com.dnielfe.manager.activities.AbstractBrowserActivity;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
 import com.dnielfe.manager.fragments.BrowserFragment;
 

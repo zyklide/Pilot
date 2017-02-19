@@ -10,7 +10,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v4.provider.DocumentFile;
 import android.widget.Toast;
 
-import com.dnielfe.manager.BrowserActivity;
+import com.dnielfe.manager.activities.BrowserActivity;
 import com.dnielfe.manager.BuildConfig;
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.preview.IconPreview;
@@ -27,8 +27,6 @@ import java.math.BigInteger;
 import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.util.ArrayList;
-
-import static java.security.AccessController.getContext;
 
 public class SimpleUtils {
 

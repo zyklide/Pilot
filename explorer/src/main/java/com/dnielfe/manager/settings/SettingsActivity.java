@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.dnielfe.manager.BrowserActivity;
+import com.dnielfe.manager.activities.BrowserActivity;
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.ThemableActivity;
+import com.dnielfe.manager.activities.ThemableActivity;
 
 public class SettingsActivity extends ThemableActivity {
 

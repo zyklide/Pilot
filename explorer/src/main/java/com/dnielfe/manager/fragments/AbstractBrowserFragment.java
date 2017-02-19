@@ -20,9 +20,9 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.dnielfe.manager.AbstractBrowserActivity;
+import com.dnielfe.manager.activities.AbstractBrowserActivity;
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.SearchActivity;
+import com.dnielfe.manager.activities.SearchActivity;
 import com.dnielfe.manager.adapters.BrowserListAdapter;
 import com.dnielfe.manager.controller.ActionModeController;
 import com.dnielfe.manager.dialogs.CreateFileDialog;

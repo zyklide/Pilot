@@ -1,4 +1,4 @@
-package com.dnielfe.manager;
+package com.dnielfe.manager.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BrowserListAdapter;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
 import com.dnielfe.manager.controller.ActionModeController;

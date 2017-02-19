@@ -1,8 +1,10 @@
-package com.dnielfe.manager;
+package com.dnielfe.manager.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
+import com.dnielfe.manager.R;
+import com.dnielfe.manager.activities.AbstractBrowserActivity;
 import com.dnielfe.manager.fragments.PickerFragment;
 
 public final class PickerActivity extends AbstractBrowserActivity {

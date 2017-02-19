@@ -11,9 +11,9 @@ import android.view.MenuItem;
 import android.widget.AbsListView;
 import android.widget.AbsListView.MultiChoiceModeListener;
 
-import com.dnielfe.manager.BrowserActivity;
+import com.dnielfe.manager.activities.BrowserActivity;
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.SearchActivity;
+import com.dnielfe.manager.activities.SearchActivity;
 import com.dnielfe.manager.adapters.BookmarksAdapter;
 import com.dnielfe.manager.dialogs.DeleteFilesDialog;
 import com.dnielfe.manager.dialogs.FilePropertiesDialog;

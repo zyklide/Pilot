@@ -1,4 +1,4 @@
-package com.dnielfe.manager;
+package com.dnielfe.manager.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.anthonycr.grant.PermissionsManager;
 import com.anthonycr.grant.PermissionsResultAction;
+import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BookmarksAdapter;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
 import com.dnielfe.manager.adapters.DrawerListAdapter;

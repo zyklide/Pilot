@@ -1,4 +1,4 @@
-package com.dnielfe.manager;
+package com.dnielfe.manager.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
