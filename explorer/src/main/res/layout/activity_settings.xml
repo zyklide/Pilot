@@ -7,7 +7,7 @@
   <include layout="@layout/support_toolbar"/>
 
   <fragment
-      android:name="com.dnielfe.manager.settings.SettingsFragment"
+      android:name="com.dnielfe.manager.fragments.SettingsFragment"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:tag="settingsFragment"/>

@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
-import com.dnielfe.manager.settings.AppPreferences;
+import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.utils.RootCommands;
 import com.dnielfe.manager.utils.SimpleUtils;
 

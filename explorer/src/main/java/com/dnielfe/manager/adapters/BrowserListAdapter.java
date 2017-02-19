@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.preview.IconPreview;
-import com.dnielfe.manager.settings.AppPreferences;
+import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.utils.SimpleUtils;
 import com.dnielfe.manager.utils.SortUtils;
 

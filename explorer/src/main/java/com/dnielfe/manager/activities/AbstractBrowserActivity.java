@@ -28,7 +28,6 @@ import com.dnielfe.manager.adapters.MergeAdapter;
 import com.dnielfe.manager.fragments.AbstractBrowserFragment;
 import com.dnielfe.manager.fragments.BrowserFragment;
 import com.dnielfe.manager.preview.IconPreview;
-import com.dnielfe.manager.settings.SettingsActivity;
 import com.dnielfe.manager.ui.DirectoryNavigationView;
 import com.dnielfe.manager.ui.PageIndicator;
 

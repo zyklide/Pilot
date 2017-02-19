@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.settings.AppPreferences;
+import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.ui.PageIndicator;
 import com.dnielfe.manager.utils.Permissions;
 import com.dnielfe.manager.utils.RootCommands;

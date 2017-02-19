@@ -17,7 +17,7 @@ import android.provider.MediaStore;
 import android.widget.ImageView;
 
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.settings.AppPreferences;
+import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.utils.SimpleUtils;
 
 import java.io.File;

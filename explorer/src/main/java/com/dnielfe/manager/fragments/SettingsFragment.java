@@ -1,4 +1,4 @@
-package com.dnielfe.manager.settings;
+package com.dnielfe.manager.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import com.dnielfe.manager.R;
+import com.dnielfe.manager.activities.SettingsActivity;
+import com.dnielfe.manager.utils.AppPreferences;
 
 public final class SettingsFragment extends PreferenceFragment {
 

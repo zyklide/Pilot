@@ -15,7 +15,6 @@ import com.dnielfe.manager.BuildConfig;
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.preview.IconPreview;
 import com.dnielfe.manager.preview.MimeTypes;
-import com.dnielfe.manager.settings.AppPreferences;
 
 import java.io.File;
 import java.io.FileInputStream;

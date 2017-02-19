@@ -1,7 +1,5 @@
 package com.dnielfe.manager.utils;
 
-import com.dnielfe.manager.settings.AppPreferences;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;

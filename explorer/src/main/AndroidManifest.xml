@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.dnielfe.manager.settings.SettingsActivity"
+            android:name="com.dnielfe.manager.activities.SettingsActivity"
             android:label="@string/settings"
             android:parentActivityName=".activities.BrowserActivity" />
         <activity

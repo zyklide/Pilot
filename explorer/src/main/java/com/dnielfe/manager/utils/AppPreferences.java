@@ -1,4 +1,4 @@
-package com.dnielfe.manager.settings;
+package com.dnielfe.manager.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
