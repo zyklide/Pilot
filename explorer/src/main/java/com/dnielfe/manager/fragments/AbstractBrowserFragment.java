@@ -40,8 +40,7 @@ import com.melnykov.fab.FloatingActionButton;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
-public abstract class AbstractBrowserFragment extends UserVisibleHintFragment implements
-    MultiFileObserver.OnEventListener, PopupMenu.OnMenuItemClickListener {
+public abstract class AbstractBrowserFragment extends UserVisibleHintFragment implements MultiFileObserver.OnEventListener, PopupMenu.OnMenuItemClickListener {
   private Activity mActivity;
   private FragmentManager fm;
 
@@ -79,17 +78,14 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
     mUpdatePathListener = (onUpdatePathListener) mActivity;
     mActionController = new ActionModeController(mActivity);
     mActionController.setListView(mListView);
-
     if (sHandler == null) {
       sHandler = new Handler(mActivity.getMainLooper());
     }
-
     initDirectory(state, intent);
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_browser, container, false);
 
     initList(inflater, rootView);
@@ -100,20 +96,20 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   @Override
   protected void onVisible() {
     final AbstractBrowserActivity activity = (AbstractBrowserActivity) getActivity();
+
     // check for root
     AppPreferences.rootAccess();
-
     navigateTo(mCurrentPath);
 
     // this is only needed if you select "move/copy files" in SearchActivity and come back
-    if (!ClipBoard.isEmpty())
+    if (!ClipBoard.isEmpty()) {
       activity.supportInvalidateOptionsMenu();
+    }
   }
 
   @Override
   protected void onInvisible() {
     mObserver.stopWatching();
-
     if (mActionController != null) {
       mActionController.finishActionMode();
     }
@@ -128,7 +124,6 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   public void initList(LayoutInflater inflater, View rootView) {
     final AbstractBrowserActivity context = (AbstractBrowserActivity) getActivity();
     mListAdapter = new BrowserListAdapter(context, inflater);
-
     mListView = (ListView) rootView.findViewById(android.R.id.list);
     mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
     mListView.setAdapter(mListAdapter);
@@ -137,12 +132,9 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
       @Override
       public void onItemClick(AdapterView<?> parent, View view,
                               int position, long id) {
-        final File file = new File((mListView.getAdapter()
-            .getItem(position)).toString());
-
+        final File file = new File((mListView.getAdapter().getItem(position)).toString());
         if (file.isDirectory()) {
           navigateTo(file.getAbsolutePath());
-
           // go to the top of the ListView
           mListView.setSelection(0);
         } else {
@@ -165,8 +157,7 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
 
   private void showMenu(View v) {
     PopupMenu popup = new PopupMenu(mActivity, v);
-
-    // This activity implements OnMenuItemClickListener
+    // this activity implements OnMenuItemClickListener
     popup.setOnMenuItemClickListener(this);
     popup.inflate(R.menu.fab_menu);
     popup.show();
@@ -179,10 +170,12 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
         final DialogFragment dialog1 = new CreateFileDialog();
         dialog1.show(fm, AbstractBrowserActivity.TAG_DIALOG);
         return true;
+
       case R.id.createfolder:
         final DialogFragment dialog2 = new CreateFolderDialog();
         dialog2.show(fm, AbstractBrowserActivity.TAG_DIALOG);
         return true;
+
       default:
         return false;
     }
@@ -201,9 +194,9 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   public void navigateTo(String path) {
     mCurrentPath = path;
 
-    if (!mUseBackKey)
+    if (!mUseBackKey) {
       mUseBackKey = true;
-
+    }
     if (mObserver != null) {
       mObserver.stopWatching();
       mObserver.removeOnEventListener(this);
@@ -214,17 +207,16 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
     mObserver = mObserverCache.getOrCreate(path);
 
     // add listener for FileObserver and start watching
-    if (mObserver.listeners.isEmpty())
+    if (mObserver.listeners.isEmpty()) {
       mObserver.addOnEventListener(this);
+    }
     mObserver.startWatching();
-
     mUpdatePathListener.onUpdatePath(path);
   }
 
   @Override
   public void onEvent(int event, String path) {
-    // this will automatically update the directory when an action like this
-    // will be performed
+    // automatically update the directory when an action will happen
     switch (event & FileObserver.ALL_EVENTS) {
       case FileObserver.CREATE:
       case FileObserver.CLOSE_WRITE:
@@ -244,7 +236,6 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   @Override
   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.main, menu);
-
     if (AbstractBrowserActivity.isDrawerOpen()) {
       menu.findItem(R.id.paste).setVisible(false);
       menu.findItem(R.id.folderinfo).setVisible(false);
@@ -258,27 +249,29 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   public boolean onOptionsItemSelected(MenuItem item) {
     final AbstractBrowserActivity activity = (AbstractBrowserActivity) getActivity();
     final FragmentManager fm = getFragmentManager();
-
     switch (item.getItemId()) {
       case R.id.folderinfo:
         final DialogFragment dirInfo = new DirectoryInfoDialog();
         dirInfo.show(fm, AbstractBrowserActivity.TAG_DIALOG);
         return true;
+
       case R.id.search:
         Intent sintent = new Intent(activity, SearchActivity.class);
         startActivity(sintent);
         return true;
+
       case R.id.paste:
         final PasteTaskExecutor ptc = new PasteTaskExecutor(activity, mCurrentPath);
         ptc.start();
         return true;
+
       default:
         return super.onOptionsItemSelected(item);
     }
   }
 
   public void onNavigate(String path) {
-    // navigate to path when Navigation button is clicked
+    // navigate to path when navigation button is clicked
     if (mActionController.isActionMode()) {
       mActionController.finishActionMode();
     }
@@ -289,7 +282,6 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
 
   private void initDirectory(Bundle savedInstanceState, Intent intent) {
     String defaultdir;
-
     if (savedInstanceState != null) {
       // get directory when you rotate your phone
       defaultdir = savedInstanceState.getString("location");
@@ -312,14 +304,14 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
 
     File dir = new File(defaultdir);
 
-    if (dir.exists() && dir.isDirectory())
+    if (dir.exists() && dir.isDirectory()) {
       navigateTo(dir.getAbsolutePath());
+    }
   }
 
   private static final class NavigateRunnable implements Runnable {
     private final WeakReference<AbstractBrowserActivity> abActivityWeakRef;
     private final String target;
-
     NavigateRunnable(final AbstractBrowserActivity abActivity, final String path) {
       this.abActivityWeakRef = new WeakReference<>(abActivity);
       this.target = path;
@@ -333,22 +325,19 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
       if (abActivity != null) {
         abActivity.getCurrentBrowserFragment().navigateTo(target);
       } else {
-        Log.w(this.getClass().getName(),
-            "NavigateRunnable: activity weakref returned null, can't navigate");
+        Log.w(this.getClass().getName(), "NavigateRunnable: activity weakref returned null, can't navigate");
       }
     }
   }
 
   public void onBookmarkClick(File file) {
     if (!file.exists()) {
-      Toast.makeText(mActivity, getString(R.string.cantopenfile),
-          Toast.LENGTH_SHORT).show();
+      Toast.makeText(mActivity, getString(R.string.cantopenfile), Toast.LENGTH_SHORT).show();
       return;
     }
 
     if (file.isDirectory()) {
       navigateTo(file.getAbsolutePath());
-
       // go to the top of the ListView
       mListView.setSelection(0);
     } else {
@@ -368,16 +357,13 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
       mListView.setSelection(mListAdapter.getPosition(file.getPath()));
       return true;
     } else if (mUseBackKey && mCurrentPath.equals("/")) {
-      Toast.makeText(mActivity, getString(R.string.pressbackagaintoquit),
-          Toast.LENGTH_SHORT).show();
-
+      Toast.makeText(mActivity, getString(R.string.pressbackagaintoquit), Toast.LENGTH_SHORT).show();
       mUseBackKey = false;
       return false;
     } else if (!mUseBackKey && mCurrentPath.equals("/")) {
       mActivity.finish();
       return false;
     }
-
     return true;
   }
 

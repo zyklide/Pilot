@@ -2,9 +2,7 @@ package com.dnielfe.manager.fragments;
 
 import android.app.Fragment;
 
-/**
- * Fragment that manages resumed and visible states combining them
- */
+// fragment that manages resumed and visible states combining them
 public abstract class UserVisibleHintFragment extends Fragment {
 
   private boolean mResumed;
@@ -39,14 +37,9 @@ public abstract class UserVisibleHintFragment extends Fragment {
     this.onInvisible();
   }
 
-  /**
-   * Called when onResume was called and userVisibleHint is set to true or
-   * vice-versa
-   */
+  // called when onResume is called and userVisibleHint is set to true or the opposite
   protected abstract void onVisible();
 
-  /**
-   * Called when onStop was called or userVisibleHint is set to false
-   */
+  // called when onStop is called or userVisibleHint is set to false
   protected abstract void onInvisible();
 }

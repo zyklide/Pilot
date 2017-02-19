@@ -114,7 +114,7 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
   }
 
   protected void initViewPager() {
-    // Instantiate a ViewPager and a PagerAdapter.
+    // instantiate a ViewPager and PagerAdapter
     ViewPager mPager = (ViewPager) findViewById(R.id.pager);
     BrowserTabsAdapter mPagerAdapter = new BrowserTabsAdapter(fm);
     mPager.setAdapter(mPagerAdapter);

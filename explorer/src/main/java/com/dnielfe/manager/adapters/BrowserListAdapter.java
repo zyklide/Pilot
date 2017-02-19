@@ -43,14 +43,12 @@ public class BrowserListAdapter extends BaseAdapter {
         DateFormat.SHORT, Locale.getDefault());
 
     if (convertView == null) {
-      convertView = mInflater.inflate(R.layout.item_browserlist, parent,
-          false);
+      convertView = mInflater.inflate(R.layout.item_browserlist, parent, false);
       mViewHolder = new ViewHolder(convertView);
       convertView.setTag(mViewHolder);
     } else {
       mViewHolder = (ViewHolder) convertView.getTag();
     }
-
     if (AppPreferences.getListAppearance() > 0) {
       mViewHolder.dateview.setVisibility(TextView.VISIBLE);
     } else {
@@ -61,22 +59,18 @@ public class BrowserListAdapter extends BaseAdapter {
     IconPreview.getFileIcon(file, mViewHolder.icon);
 
     if (file.isFile()) {
-      // Shows the size of File
+      // shows the size of file
       mViewHolder.bottomView.setText(SimpleUtils.formatCalculatedSize(file.length()));
     } else {
       String[] list = file.list();
-
-      if (list != null)
+      if (list != null) {
         numItems = list.length;
-
-      // show the number of files in Folder
-      mViewHolder.bottomView.setText(numItems
-          + mResources.getString(R.string.files));
+      }
+      // show the number of files in folder
+      mViewHolder.bottomView.setText(numItems + mResources.getString(R.string.files));
     }
-
     mViewHolder.topView.setText(file.getName());
     mViewHolder.dateview.setText(df.format(file.lastModified()));
-
     return convertView;
   }
 
@@ -95,24 +89,23 @@ public class BrowserListAdapter extends BaseAdapter {
   }
 
   public void addFiles(String path) {
-    if (!mDataSource.isEmpty())
+    if (!mDataSource.isEmpty()) {
       mDataSource.clear();
-
+    }
     mDataSource = SimpleUtils.listFiles(path, mContext);
 
     // sort files with a comparator if not empty
-    if (!mDataSource.isEmpty())
+    if (!mDataSource.isEmpty()) {
       SortUtils.sortList(mDataSource, path);
-
+    }
     notifyDataSetChanged();
   }
 
   public void addContent(ArrayList<String> files) {
-    if (!mDataSource.isEmpty())
+    if (!mDataSource.isEmpty()) {
       mDataSource.clear();
-
+    }
     mDataSource = files;
-
     notifyDataSetChanged();
   }
 

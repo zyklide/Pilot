@@ -21,10 +21,8 @@ public final class PickerFragment extends AbstractBrowserFragment {
   public static final String TAG = "PickerFragment";
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_browser, container, false);
-
     initList(inflater, rootView);
     initFab(rootView);
     return rootView;

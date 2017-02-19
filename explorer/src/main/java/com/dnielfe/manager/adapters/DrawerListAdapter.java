@@ -21,18 +21,14 @@ public class DrawerListAdapter extends BaseAdapter {
 
   public View getView(int position, View convertView, ViewGroup parent) {
     ViewHolder holder;
-
     if (convertView == null) {
-      LayoutInflater inflater = (LayoutInflater) mContext
-          .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-      convertView = inflater.inflate(R.layout.item_drawermenu, parent,
-          false);
+      LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+      convertView = inflater.inflate(R.layout.item_drawermenu, parent, false);
       holder = new ViewHolder(convertView);
       convertView.setTag(holder);
     } else {
       holder = (ViewHolder) convertView.getTag();
     }
-
     holder.title.setText(mTitle[position]);
     return convertView;
   }
@@ -54,7 +50,6 @@ public class DrawerListAdapter extends BaseAdapter {
 
   private class ViewHolder {
     private TextView title = null;
-
     ViewHolder(View row) {
       title = (TextView) row.findViewById(R.id.title);
     }

@@ -12,7 +12,7 @@ public abstract class ThemableActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // get default preferences at start - we need this for setting the theme
+    // get default preferences at start for setting the theme
     AppPreferences.updatePreferences(this);
 
     mCurrentTheme = AppPreferences.getDefaultTheme();

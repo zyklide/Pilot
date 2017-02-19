@@ -21,7 +21,7 @@ public final class CreateFileDialog extends DialogFragment {
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     final Activity a = getActivity();
 
-    // Set an EditText view to get user input
+    // set a view to get user input
     final EditText inputf = new EditText(a);
     inputf.setHint(R.string.enter_name);
 
@@ -34,16 +34,13 @@ public final class CreateFileDialog extends DialogFragment {
           public void onClick(DialogInterface dialog, int which) {
             String name = inputf.getText().toString();
             String path = BrowserTabsAdapter.getCurrentBrowserFragment().mCurrentPath;
-
             if (name.length() >= 1) {
               boolean success = SimpleUtils.createFile(new File(path, name));
-
               if (success)
                 Toast.makeText(a, R.string.filecreated, Toast.LENGTH_SHORT).show();
               else
                 Toast.makeText(a, R.string.error, Toast.LENGTH_SHORT).show();
             }
-
             dialog.dismiss();
           }
         });

@@ -64,19 +64,17 @@ public final class ActionModeController {
     public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
       menu.clear();
       mActivity.getMenuInflater().inflate(R.menu.actionmode, menu);
-
       if (mActivity instanceof SearchActivity) {
         menu.removeItem(R.id.actiongroupowner);
         menu.removeItem(R.id.actionrename);
         menu.removeItem(R.id.actionzip);
-
         if (mListView.getCheckedItemCount() > 1) {
           menu.removeItem(R.id.actiondetails);
         }
       } else {
-        if (!AppPreferences.rootAccess())
+        if (!AppPreferences.rootAccess()) {
           menu.removeItem(R.id.actiongroupowner);
-
+        }
         if (mListView.getCheckedItemCount() > 1) {
           menu.removeItem(R.id.actionrename);
           menu.removeItem(R.id.actiongroupowner);
@@ -103,7 +101,6 @@ public final class ActionModeController {
       final int checkedItemSize = items.size();
       final String[] files = new String[mListView.getCheckedItemCount()];
       int index = -1;
-
       switch (item.getItemId()) {
         case R.id.actionmove:
           for (int i = 0; i < checkedItemSize; i++) {
@@ -116,6 +113,7 @@ public final class ActionModeController {
           mode.finish();
           mActivity.invalidateOptionsMenu();
           return true;
+
         case R.id.actioncopy:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -127,6 +125,7 @@ public final class ActionModeController {
           mode.finish();
           mActivity.invalidateOptionsMenu();
           return true;
+
         case R.id.actiongroupowner:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -140,6 +139,7 @@ public final class ActionModeController {
             }
           }
           return true;
+
         case R.id.actiondelete:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -151,6 +151,7 @@ public final class ActionModeController {
           mode.finish();
           dialog1.show(mActivity.getFragmentManager(), BrowserActivity.TAG_DIALOG);
           return true;
+
         case R.id.actionshare:
           final ArrayList<Uri> uris = new ArrayList<>(mListView.getCheckedItemCount());
           for (int i = 0; i < checkedItemSize; i++) {
@@ -172,6 +173,7 @@ public final class ActionModeController {
           mActivity.startActivity(Intent.createChooser(intent,
               mActivity.getString(R.string.share)));
           return true;
+
         case R.id.actionshortcut:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -179,12 +181,12 @@ public final class ActionModeController {
               files[++index] = (String) mListView.getItemAtPosition(key);
             }
           }
-
           for (String a : files) {
             SimpleUtils.createShortcut(mActivity, a);
           }
           mode.finish();
           return true;
+
         case R.id.actionbookmark:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -192,14 +194,13 @@ public final class ActionModeController {
               files[++index] = (String) mListView.getItemAtPosition(key);
             }
           }
-
           BookmarksAdapter mAdapter = BrowserActivity.getBookmarksAdapter();
-
           for (String a : files) {
             mAdapter.createBookmark(new File(a));
           }
           mode.finish();
           return true;
+
         case R.id.actionzip:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -211,6 +212,7 @@ public final class ActionModeController {
           mode.finish();
           dialog.show(mActivity.getFragmentManager(), BrowserActivity.TAG_DIALOG);
           return true;
+
         case R.id.actionrename:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -224,6 +226,7 @@ public final class ActionModeController {
             }
           }
           return true;
+
         case R.id.actiondetails:
           for (int i = 0; i < checkedItemSize; i++) {
             final int key = items.keyAt(i);
@@ -237,11 +240,11 @@ public final class ActionModeController {
             }
           }
           return true;
+
         case R.id.actionall:
           for (int i = 0; i < mListView.getCount(); i++) {
             mListView.setItemChecked(i, true);
           }
-
           mode.invalidate();
           return true;
 
@@ -251,8 +254,7 @@ public final class ActionModeController {
     }
 
     @Override
-    public void onItemCheckedStateChanged(ActionMode mode, int position,
-                                          long id, boolean checked) {
+    public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
       mode.setTitle(mListView.getCheckedItemCount() + mSelected);
     }
   }
