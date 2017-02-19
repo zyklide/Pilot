@@ -1,25 +1,17 @@
 package com.dnielfe.manager.utils;
 
-/**
- * Holds references to copied or moved to clipboard files
- */
+// holds references to copied or moved to clipboard files
 public final class ClipBoard {
 
     private static final Object LOCK = new Object();
 
-    /**
-     * Files in clip board
-     */
+    // files in clipboard
     private static String[] clipBoard;
 
-    /**
-     * True if move, false if cutCopy
-     */
+    // true if move and false if cut or copy
     private static boolean isMove;
 
-    /**
-     * If true, clipBoard can't be modified
-     */
+    // clipboard can't be modified if true
     private static volatile boolean isLocked;
 
     private ClipBoard() {

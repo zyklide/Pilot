@@ -40,6 +40,8 @@ public class BookmarksHelper extends SQLiteOpenHelper {
         addBookmarkOnCreate(db, new Bookmark("Internal", Environment.getExternalStorageDirectory().getPath()));
         // add root directory
         addBookmarkOnCreate(db, new Bookmark("Root", "/"));
+        // add external storage
+        addBookmarkOnCreate(db, new Bookmark("External", "/storage/0000-0000"));
     }
 
     @Override
