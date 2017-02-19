@@ -30,7 +30,7 @@ public class SettingsActivity extends ThemableActivity {
     startActivity(i);
   }
 
-  void proxyRestart() {
+  public void proxyRestart() {
     restart();
   }
 
