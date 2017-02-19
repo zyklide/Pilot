@@ -4,26 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/support_toolbar" />
+  <include layout="@layout/support_toolbar"/>
 
-    <!-- Main content view -->
+  <!-- Main content view -->
 
-    <LinearLayout
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <include layout="@layout/directory_buttons"/>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="1.5dp"
+        android:background="?colorAccent"/>
 
-        <include layout="@layout/directory_buttons" />
-
-        <View
-            android:layout_height="1.5dp"
-            android:layout_width="match_parent"
-            android:background="?colorAccent" />
-
-        <FrameLayout
-            android:id="@+id/browser_fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/browser_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+  </LinearLayout>
 
 </LinearLayout>

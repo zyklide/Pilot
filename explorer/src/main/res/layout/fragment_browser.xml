@@ -4,31 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@android:id/empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:text="@string/empty"
-        android:textSize="22sp"
-        android:textColor="?colorAccent" />
+  <TextView
+      android:id="@android:id/empty"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal|center_vertical"
+      android:text="@string/empty"
+      android:textColor="?colorAccent"
+      android:textSize="22sp"/>
 
-    <ListView
-        android:id="@+id/android:list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:drawSelectorOnTop="true"
-        android:longClickable="true"
-        android:scrollbarStyle="outsideOverlay"
-        android:smoothScrollbar="true" />
+  <ListView
+      android:id="@+id/android:list"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:drawSelectorOnTop="true"
+      android:longClickable="true"
+      android:scrollbarStyle="outsideOverlay"
+      android:smoothScrollbar="true"/>
 
-	<!-- If FAB is moved to activity, PickerFragment should inflate this layout instead -->
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/fabbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="20dp"
-        android:src="?attr/fab_drawable"
-        fab:fab_colorNormal="?colorAccent" />
+  <!-- If FAB is moved to activity, PickerFragment should inflate this layout instead -->
+  <com.melnykov.fab.FloatingActionButton
+      android:id="@+id/fabbutton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|right"
+      android:layout_margin="20dp"
+      android:src="?attr/fab_drawable"
+      fab:fab_colorNormal="?colorAccent"/>
 </FrameLayout>
