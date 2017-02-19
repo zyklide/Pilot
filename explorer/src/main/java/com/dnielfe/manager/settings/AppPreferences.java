@@ -8,9 +8,9 @@ import android.preference.PreferenceManager;
 import com.dnielfe.manager.R;
 import com.stericson.RootTools.RootTools;
 
-public final class Settings {
+public final class AppPreferences {
 
-  private Settings() {
+  private AppPreferences() {
   }
 
   private static SharedPreferences mPrefs;

@@ -15,7 +15,7 @@ import com.dnielfe.manager.BuildConfig;
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.preview.IconPreview;
 import com.dnielfe.manager.preview.MimeTypes;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,7 +44,7 @@ public class SimpleUtils {
   private static void search_file(String dir, String fileName, ArrayList<String> n) {
     File rootDir = new File(dir);
     String[] list = rootDir.list();
-    boolean root = Settings.rootAccess();
+    boolean root = AppPreferences.rootAccess();
 
     if (list != null && rootDir.canRead()) {
       for (String aList : list) {
@@ -76,7 +76,7 @@ public class SimpleUtils {
 
   public static ArrayList<String> listFiles(String path, Context c) {
     ArrayList<String> mDirContent = new ArrayList<>();
-    boolean showhidden = Settings.showHiddenFiles();
+    boolean showhidden = AppPreferences.showHiddenFiles();
 
     if (!mDirContent.isEmpty())
       mDirContent.clear();
@@ -95,7 +95,7 @@ public class SimpleUtils {
           mDirContent.add(path + "/" + aList);
         }
       }
-    } else if (Settings.rootAccess()) {
+    } else if (AppPreferences.rootAccess()) {
       mDirContent = RootCommands.listFiles(file.getAbsolutePath(), showhidden);
     } else {
       Toast.makeText(c, c.getString(R.string.cantreadfolder), Toast.LENGTH_SHORT).show();
@@ -237,7 +237,7 @@ public class SimpleUtils {
           return true;
       }
 
-      if (Settings.rootAccess()) {
+      if (AppPreferences.rootAccess()) {
         return RootCommands.createRootdir(folder);
       }
     }
@@ -271,7 +271,7 @@ public class SimpleUtils {
 
       if (target.exists())
         target.delete();
-    } else if (!target.delete() && Settings.rootAccess()) {
+    } else if (!target.delete() && AppPreferences.rootAccess()) {
       RootCommands.deleteRootFileOrDir(target);
     }
   }

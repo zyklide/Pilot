@@ -20,7 +20,7 @@ import com.dnielfe.manager.dialogs.FilePropertiesDialog;
 import com.dnielfe.manager.dialogs.GroupOwnerDialog;
 import com.dnielfe.manager.dialogs.RenameDialog;
 import com.dnielfe.manager.dialogs.ZipFilesDialog;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 import com.dnielfe.manager.utils.ClipBoard;
 import com.dnielfe.manager.utils.SimpleUtils;
 
@@ -74,7 +74,7 @@ public final class ActionModeController {
           menu.removeItem(R.id.actiondetails);
         }
       } else {
-        if (!Settings.rootAccess())
+        if (!AppPreferences.rootAccess())
           menu.removeItem(R.id.actiongroupowner);
 
         if (mListView.getCheckedItemCount() > 1) {

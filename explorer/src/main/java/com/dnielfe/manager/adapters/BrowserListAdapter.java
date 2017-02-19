@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.preview.IconPreview;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 import com.dnielfe.manager.utils.SimpleUtils;
 import com.dnielfe.manager.utils.SortUtils;
 
@@ -51,7 +51,7 @@ public class BrowserListAdapter extends BaseAdapter {
       mViewHolder = (ViewHolder) convertView.getTag();
     }
 
-    if (Settings.getListAppearance() > 0) {
+    if (AppPreferences.getListAppearance() > 0) {
       mViewHolder.dateview.setVisibility(TextView.VISIBLE);
     } else {
       mViewHolder.dateview.setVisibility(TextView.GONE);

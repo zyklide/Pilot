@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 
 public abstract class ThemableActivity extends AppCompatActivity {
 
@@ -13,9 +13,9 @@ public abstract class ThemableActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // get default preferences at start - we need this for setting the theme
-    Settings.updatePreferences(this);
+    AppPreferences.updatePreferences(this);
 
-    mCurrentTheme = Settings.getDefaultTheme();
+    mCurrentTheme = AppPreferences.getDefaultTheme();
     setTheme(mCurrentTheme);
     super.onCreate(savedInstanceState);
   }
@@ -23,7 +23,7 @@ public abstract class ThemableActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    if (mCurrentTheme != Settings.getDefaultTheme()) {
+    if (mCurrentTheme != AppPreferences.getDefaultTheme()) {
       restart();
     }
   }

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 import com.dnielfe.manager.ui.PageIndicator;
 import com.dnielfe.manager.utils.Permissions;
 import com.dnielfe.manager.utils.RootCommands;
@@ -351,7 +351,7 @@ public final class FilePropertiesDialog extends DialogFragment {
     private void getPermissions(File file) {
       String[] mFileInfo = null;
 
-      if (Settings.rootAccess())
+      if (AppPreferences.rootAccess())
         mFileInfo = RootCommands.getFileProperties(file);
 
       if (mFileInfo != null) {

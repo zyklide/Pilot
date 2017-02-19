@@ -1,6 +1,6 @@
 package com.dnielfe.manager.utils;
 
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class SortUtils {
     String[] items = new String[len];
     content.toArray(items);
 
-    switch (Settings.getSortType()) {
+    switch (AppPreferences.getSortType()) {
       case SORT_ALPHA:
         Arrays.sort(items, Comparator_ALPH);
         content.clear();
@@ -72,7 +72,7 @@ public class SortUtils {
         break;
     }
 
-    if (Settings.reverseListView()) {
+    if (AppPreferences.reverseListView()) {
       Collections.reverse(content);
     }
   }

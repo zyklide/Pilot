@@ -31,7 +31,7 @@ import com.dnielfe.manager.dialogs.DirectoryInfoDialog;
 import com.dnielfe.manager.dialogs.UnpackDialog;
 import com.dnielfe.manager.fileobserver.FileObserverCache;
 import com.dnielfe.manager.fileobserver.MultiFileObserver;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 import com.dnielfe.manager.tasks.PasteTaskExecutor;
 import com.dnielfe.manager.utils.ClipBoard;
 import com.dnielfe.manager.utils.SimpleUtils;
@@ -101,7 +101,7 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   protected void onVisible() {
     final AbstractBrowserActivity activity = (AbstractBrowserActivity) getActivity();
     // check for root
-    Settings.rootAccess();
+    AppPreferences.rootAccess();
 
     navigateTo(mCurrentPath);
 
@@ -303,10 +303,10 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
           if (dir.exists() && dir.isFile())
             listItemAction(dir);
           // you need to call it when shortcut-dir not exists
-          defaultdir = Settings.getDefaultDir();
+          defaultdir = AppPreferences.getDefaultDir();
         }
       } catch (Exception e) {
-        defaultdir = Settings.getDefaultDir();
+        defaultdir = AppPreferences.getDefaultDir();
       }
     }
 

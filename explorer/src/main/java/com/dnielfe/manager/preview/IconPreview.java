@@ -17,7 +17,7 @@ import android.provider.MediaStore;
 import android.widget.ImageView;
 
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 import com.dnielfe.manager.utils.SimpleUtils;
 
 import java.io.File;
@@ -51,7 +51,7 @@ public class IconPreview {
   }
 
   public static void getFileIcon(File file, final ImageView icon) {
-    if (Settings.showThumbnail() & isvalidMimeType(file)) {
+    if (AppPreferences.showThumbnail() & isvalidMimeType(file)) {
       loadBitmap(file, icon);
     } else {
       loadFromRes(file, icon);

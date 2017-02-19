@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
-import com.dnielfe.manager.settings.Settings;
+import com.dnielfe.manager.settings.AppPreferences;
 import com.dnielfe.manager.utils.RootCommands;
 import com.dnielfe.manager.utils.SimpleUtils;
 
@@ -58,7 +58,7 @@ public final class RenameTask extends AsyncTask<String, Void, List<String>> {
       if (SimpleUtils.renameTarget(path + "/" + files[0], files[1])) {
         succes = true;
       } else {
-        if (Settings.rootAccess()) {
+        if (AppPreferences.rootAccess()) {
           RootCommands.renameRootTarget(path, files[0], files[1]);
           succes = true;
         }

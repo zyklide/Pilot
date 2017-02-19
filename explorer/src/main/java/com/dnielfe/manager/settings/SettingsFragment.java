@@ -32,13 +32,13 @@ public final class SettingsFragment extends PreferenceFragment {
   private void init() {
     final ListPreference theme = (ListPreference) findPreference("preference_theme");
     theme.setEntryValues(THEMES_VALUES);
-    theme.setValue(String.valueOf(Settings.getDefaultTheme()));
+    theme.setValue(String.valueOf(AppPreferences.getDefaultTheme()));
     theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
       @Override
       public boolean onPreferenceChange(Preference preference, Object newValue) {
         final int chosenTheme = Integer.parseInt((String) newValue);
-        if (chosenTheme != Settings.getDefaultTheme()) {
-          Settings.setDefaultTheme(chosenTheme);
+        if (chosenTheme != AppPreferences.getDefaultTheme()) {
+          AppPreferences.setDefaultTheme(chosenTheme);
           ((SettingsActivity) getActivity()).proxyRestart();
           return true;
         }
