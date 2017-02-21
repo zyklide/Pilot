@@ -26,8 +26,7 @@ public final class DirectoryInfoDialog extends DialogFragment {
 
   public Dialog onCreateDialog(final Bundle savedInstanceState) {
     final Activity activity = this.getActivity();
-    mView = activity.getLayoutInflater().inflate(
-        R.layout.dialog_directory_info, null);
+    mView = activity.getLayoutInflater().inflate(R.layout.dialog_directory_info, null);
     final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
     builder.setTitle(R.string.dir_info);
     builder.setView(mView);
@@ -78,8 +77,7 @@ public final class DirectoryInfoDialog extends DialogFragment {
     }
   }
 
-  private static final class PartitionInfoTask extends
-      AsyncTask<File, Void, PartitionInfo> {
+  private static final class PartitionInfoTask extends AsyncTask<File, Void, PartitionInfo> {
 
     private final WeakReference<View> mViewRef;
 
@@ -96,51 +94,41 @@ public final class DirectoryInfoDialog extends DialogFragment {
       final long valueUsed = valueTotal - valueAvail;
       String[] permission = null;
       String perm;
-
-      if (RootTools.isAccessGiven())
+      if (RootTools.isAccessGiven()) {
         permission = RootCommands.getFileProperties(params[0]);
-
+      }
       perm = permission != null ? permission[0] : Permissions.getBasicPermission(params[0]);
-
-      return new PartitionInfo(path, perm, valueTotal,
-          statFs.getBlockSizeLong(), statFs.getFreeBytes(), valueUsed);
+      return new PartitionInfo(path, perm, valueTotal, statFs.getBlockSizeLong(), statFs.getFreeBytes(), valueUsed);
     }
 
     @Override
     protected void onPostExecute(final PartitionInfo partitionInfo) {
       final View view = mViewRef.get();
       if (view != null) {
-        final TextView title = (TextView) view
-            .findViewById(R.id.location);
+        final TextView title = (TextView) view.findViewById(R.id.location);
         title.setText(partitionInfo.mPath);
-
         if (partitionInfo.mPermissionText.length() != 0L) {
-          final TextView perm = (TextView) view
-              .findViewById(R.id.dir_permission);
+          final TextView perm = (TextView) view.findViewById(R.id.dir_permission);
           perm.setText(partitionInfo.mPermissionText);
         }
 
         if (partitionInfo.mTotalBytes != 0L) {
-          final TextView total = (TextView) view
-              .findViewById(R.id.total);
+          final TextView total = (TextView) view.findViewById(R.id.total);
           total.setText(partitionInfo.mTotalBytesText);
         }
 
         if (partitionInfo.mBlockSize != 0L) {
-          final TextView block = (TextView) view
-              .findViewById(R.id.block_size);
+          final TextView block = (TextView) view.findViewById(R.id.block_size);
           block.setText(partitionInfo.mBlockSizeText);
         }
 
         if (partitionInfo.mFreeBytes != 0L) {
-          final TextView free = (TextView) view
-              .findViewById(R.id.free);
+          final TextView free = (TextView) view.findViewById(R.id.free);
           free.setText(partitionInfo.mFreeBytesText);
         }
 
         if (partitionInfo.mUsedSpace != 0L) {
-          final TextView used = (TextView) view
-              .findViewById(R.id.used);
+          final TextView used = (TextView) view.findViewById(R.id.used);
           used.setText(partitionInfo.mUsedSpaceText);
         }
       }

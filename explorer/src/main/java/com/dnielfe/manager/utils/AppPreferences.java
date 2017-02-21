@@ -10,16 +10,14 @@ import com.stericson.RootTools.RootTools;
 
 public final class AppPreferences {
 
+  private static SharedPreferences mPrefs;
+  private static int mTheme;
+
   private AppPreferences() {
   }
 
-  private static SharedPreferences mPrefs;
-
-  private static int mTheme;
-
   public static void updatePreferences(Context context) {
     mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-
     mTheme = Integer.parseInt(mPrefs.getString("preference_theme", Integer.toString(R.style.ThemeLight)));
 
     rootAccess();

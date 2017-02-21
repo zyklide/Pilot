@@ -21,7 +21,7 @@ public final class Permissions implements Serializable {
 
   public Permissions(String line) {
     if (line.length() != 10) {
-      throw new IllegalArgumentException("Bad permission line");
+      throw new IllegalArgumentException("bad permission line");
     }
 
     this.ur = line.charAt(1) == 'r';
@@ -86,7 +86,6 @@ public final class Permissions implements Serializable {
     if (p.ox) {
       other += 1;
     }
-
     return String.valueOf(user) + group + other;
   }
 
