@@ -81,8 +81,9 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
   public void onDestroy() {
     super.onDestroy();
 
-    if (mNavigation != null)
+    if (mNavigation != null) {
       mNavigation.removeOnNavigateListener(this);
+    }
   }
 
   @Override
@@ -95,11 +96,10 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
     mNavigation = new DirectoryNavigationView(this);
 
     // add listener for navigation view
-    if (mNavigation.listeners.isEmpty())
+    if (mNavigation.listeners.isEmpty()) {
       mNavigation.addonNavigateListener(this);
-
-    // start IconPreview class to get thumbnails if BrowserListAdapter
-    // request them
+    }
+    // start IconPreview class to get thumbnails if BrowserListAdapter requests them
     new IconPreview(this);
   }
 
@@ -126,11 +126,9 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
 
   private void setupDrawer() {
     mDrawer = (ListView) findViewById(R.id.left_drawer);
-
     mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-    mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
-        R.string.drawer_open, R.string.drawer_close) {
+    mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
       @Override
       public void onDrawerOpened(View drawerView) {
         supportInvalidateOptionsMenu();
@@ -141,7 +139,6 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
         supportInvalidateOptionsMenu();
       }
     };
-
     mDrawerLayout.addDrawerListener(mDrawerToggle);
   }
 
@@ -149,7 +146,7 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
     mBookmarksAdapter = new BookmarksAdapter(this);
     mMenuAdapter = new DrawerListAdapter(this);
 
-    // create MergeAdapter to combine multiple adapter
+    // create MergeAdapter to combine multiple adapters
     mMergeAdapter = new MergeAdapter();
     mMergeAdapter.addAdapter(mBookmarksAdapter);
     mMergeAdapter.addAdapter(mMenuAdapter);
@@ -159,11 +156,10 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (mMergeAdapter.getAdapter(position).equals(mBookmarksAdapter)) {
-
           // handle bookmark items
-          if (mDrawerLayout.isDrawerOpen(mDrawer))
+          if (mDrawerLayout.isDrawerOpen(mDrawer)) {
             mDrawerLayout.closeDrawer(mDrawer);
-
+          }
           File file = new File(mBookmarksAdapter.getItem(position).getPath());
           getCurrentBrowserFragment().onBookmarkClick(file);
         } else if (mMergeAdapter.getAdapter(position).equals(mMenuAdapter)) {
@@ -220,9 +216,9 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
 
   @Override
   public boolean onKeyDown(int keycode, @NonNull KeyEvent event) {
-    if (keycode != KeyEvent.KEYCODE_BACK)
+    if (keycode != KeyEvent.KEYCODE_BACK) {
       return false;
-
+    }
     if (isDrawerOpen()) {
       mDrawerLayout.closeDrawer(mDrawer);
       return true;

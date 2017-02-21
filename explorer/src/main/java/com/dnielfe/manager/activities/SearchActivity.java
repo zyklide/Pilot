@@ -40,17 +40,13 @@ public class SearchActivity extends ThemableActivity implements SearchView.OnQue
     // set up ActionBar
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    // init
     init();
 
     if (savedInstanceState != null) {
       mAdapter.addContent(savedInstanceState.getStringArrayList("savedList"));
-
-      getSupportActionBar().setSubtitle(String.valueOf(mAdapter.getCount())
-          + getString(R.string._files));
+      getSupportActionBar().setSubtitle(String.valueOf(mAdapter.getCount()) + getString(R.string._files));
     }
   }
 
@@ -76,14 +72,12 @@ public class SearchActivity extends ThemableActivity implements SearchView.OnQue
 
         if (f.isDirectory()) {
           finish();
-
           BrowserTabsAdapter.getCurrentBrowserFragment().navigateTo(f.getAbsolutePath());
         } else if (f.isFile()) {
           SimpleUtils.openFile(SearchActivity.this, f);
         }
       }
     });
-
     mActionController.setListView(mListView);
   }
 
@@ -122,7 +116,6 @@ public class SearchActivity extends ThemableActivity implements SearchView.OnQue
     if (TextUtils.isEmpty(query)) {
       return false;
     }
-
     SearchTask mTask = new SearchTask(this);
     mTask.execute(query);
     return true;
@@ -139,11 +132,9 @@ public class SearchActivity extends ThemableActivity implements SearchView.OnQue
     if (keycode != KeyEvent.KEYCODE_BACK) {
       return false;
     }
-
     if (mActionController.isActionMode()) {
       mActionController.finishActionMode();
     }
-
     return super.onKeyDown(keycode, event);
   }
 
@@ -157,8 +148,7 @@ public class SearchActivity extends ThemableActivity implements SearchView.OnQue
 
     @Override
     protected void onPreExecute() {
-      pr_dialog = ProgressDialog.show(context, null,
-          getString(R.string.search));
+      pr_dialog = ProgressDialog.show(context, null, getString(R.string.search));
       pr_dialog.setCanceledOnTouchOutside(true);
     }
 
@@ -171,17 +161,13 @@ public class SearchActivity extends ThemableActivity implements SearchView.OnQue
     @Override
     protected void onPostExecute(final ArrayList<String> files) {
       int len = files != null ? files.size() : 0;
-
       pr_dialog.dismiss();
-
       if (len == 0) {
-        Toast.makeText(context, R.string.itcouldntbefound,
-            Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.itcouldntbefound, Toast.LENGTH_SHORT).show();
         getSupportActionBar().setSubtitle(null);
       } else {
         mAdapter.addContent(files);
-        getSupportActionBar().setSubtitle(String.valueOf(len)
-            + getString(R.string._files));
+        getSupportActionBar().setSubtitle(String.valueOf(len) + getString(R.string._files));
       }
     }
   }
