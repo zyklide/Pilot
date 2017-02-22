@@ -32,10 +32,8 @@ public class BookmarksHelper extends SQLiteOpenHelper {
     // statement to create book table
     String CREATE_BOOK_TABLE = "CREATE TABLE " + TABLE_BOOKS + " (id " +
         "INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, path Text)";
-
     // create books table
     db.execSQL(CREATE_BOOK_TABLE);
-
     // add user directory
     addBookmarkOnCreate(db, new Bookmark("Internal", Environment.getExternalStorageDirectory().getPath()));
     // add root directory

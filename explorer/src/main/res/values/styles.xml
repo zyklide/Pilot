@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-  <style name="ThemeLight"
-      parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="themeId">1</item>
+  <style name="ThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="windowActionModeOverlay">true</item>
 
     <!-- android colors -->
@@ -31,10 +28,7 @@
     <item name="action_delete">@drawable/holo_light_action_delete</item>
     <item name="action_share">@drawable/holo_light_action_share</item>
   </style>
-
-  <style name="ThemeDark"
-      parent="Theme.AppCompat.NoActionBar">
-    <item name="themeId">2</item>
+  <style name="ThemeDark" parent="Theme.AppCompat.NoActionBar">
     <item name="windowActionModeOverlay">true</item>
 
     <!-- android colors -->
@@ -62,5 +56,4 @@
     <item name="action_delete">@drawable/holo_dark_action_delete</item>
     <item name="action_share">@drawable/holo_dark_action_share</item>
   </style>
-
 </resources>

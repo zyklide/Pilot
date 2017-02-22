@@ -12,10 +12,6 @@ import com.dnielfe.manager.utils.AppPreferences;
 
 public final class SettingsFragment extends PreferenceFragment {
 
-  private static final String[] THEMES_VALUES = new String[]{
-      Integer.toString(R.style.ThemeLight),
-      Integer.toString(R.style.ThemeDark)};
-
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,7 +23,7 @@ public final class SettingsFragment extends PreferenceFragment {
   public void onAttach(final Activity activity) {
     super.onAttach(activity);
     if (!(activity instanceof SettingsActivity)) {
-      throw new RuntimeException("Should be attached only to SettingsActivity");
+      throw new RuntimeException("should only be attached to SettingsActivity");
     }
   }
 

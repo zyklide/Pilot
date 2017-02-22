@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.dnielfe.manager.R;
 import com.dnielfe.manager.utils.AppPreferences;
 
 public abstract class ThemableActivity extends AppCompatActivity {
@@ -14,9 +15,12 @@ public abstract class ThemableActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     // get default preferences at start for setting the theme
     AppPreferences.updatePreferences(this);
-
     mCurrentTheme = AppPreferences.getDefaultTheme();
-    setTheme(mCurrentTheme);
+    if (mCurrentTheme == 0) {
+      setTheme(R.style.ThemeLight);
+    } else {
+      setTheme(R.style.ThemeDark);
+    }
     super.onCreate(savedInstanceState);
   }
 
