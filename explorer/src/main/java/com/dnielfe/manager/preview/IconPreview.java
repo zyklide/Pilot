@@ -51,7 +51,7 @@ public class IconPreview {
   }
 
   public static void getFileIcon(File file, final ImageView icon) {
-    if (AppPreferences.showThumbnail() & isvalidMimeType(file)) {
+    if (AppPreferences.getThumbnails() & isvalidMimeType(file)) {
       loadBitmap(file, icon);
     } else {
       loadFromRes(file, icon);

@@ -27,7 +27,7 @@ public class SortUtils {
     String[] items = new String[len];
     content.toArray(items);
 
-    switch (AppPreferences.getSortType()) {
+    switch (AppPreferences.getSort()) {
       case SORT_ALPHA:
         Arrays.sort(items, Comparator_ALPH);
         content.clear();
@@ -70,7 +70,7 @@ public class SortUtils {
         break;
     }
 
-    if (AppPreferences.reverseListView()) {
+    if (AppPreferences.getReverseList()) {
       Collections.reverse(content);
     }
   }

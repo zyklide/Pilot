@@ -15,7 +15,7 @@ public abstract class ThemableActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     // get default preferences at start for setting the theme
     AppPreferences.updatePreferences(this);
-    mCurrentTheme = AppPreferences.getDefaultTheme();
+    mCurrentTheme = AppPreferences.getTheme();
     if (mCurrentTheme == 0) {
       setTheme(R.style.ThemeLight);
     } else {
@@ -27,7 +27,7 @@ public abstract class ThemableActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    if (mCurrentTheme != AppPreferences.getDefaultTheme()) {
+    if (mCurrentTheme != AppPreferences.getTheme()) {
       restart();
     }
   }

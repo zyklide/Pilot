@@ -49,7 +49,7 @@ public class BrowserListAdapter extends BaseAdapter {
     } else {
       mViewHolder = (ViewHolder) convertView.getTag();
     }
-    if (AppPreferences.getListAppearance() > 0) {
+    if (AppPreferences.getViewMode() > 0) {
       mViewHolder.dateview.setVisibility(TextView.VISIBLE);
     } else {
       mViewHolder.dateview.setVisibility(TextView.GONE);

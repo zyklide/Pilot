@@ -98,7 +98,7 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
     final AbstractBrowserActivity activity = (AbstractBrowserActivity) getActivity();
 
     // check for root
-    AppPreferences.rootAccess();
+    AppPreferences.getRootEnabled();
     navigateTo(mCurrentPath);
 
     // this is only needed if you select "move/copy files" in SearchActivity and come back
@@ -295,10 +295,10 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
           if (dir.exists() && dir.isFile())
             listItemAction(dir);
           // you need to call it when shortcut-dir not exists
-          defaultdir = AppPreferences.getDefaultDir();
+          defaultdir = AppPreferences.getCustomPath();
         }
       } catch (Exception e) {
-        defaultdir = AppPreferences.getDefaultDir();
+        defaultdir = AppPreferences.getCustomPath();
       }
     }
 

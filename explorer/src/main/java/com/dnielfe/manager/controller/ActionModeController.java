@@ -72,7 +72,7 @@ public final class ActionModeController {
           menu.removeItem(R.id.actiondetails);
         }
       } else {
-        if (!AppPreferences.rootAccess()) {
+        if (!AppPreferences.getRootEnabled()) {
           menu.removeItem(R.id.actiongroupowner);
         }
         if (mListView.getCheckedItemCount() > 1) {

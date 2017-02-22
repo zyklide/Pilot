@@ -351,7 +351,7 @@ public final class FilePropertiesDialog extends DialogFragment {
     private void getPermissions(File file) {
       String[] mFileInfo = null;
 
-      if (AppPreferences.rootAccess())
+      if (AppPreferences.getRootEnabled())
         mFileInfo = RootCommands.getFileProperties(file);
 
       if (mFileInfo != null) {

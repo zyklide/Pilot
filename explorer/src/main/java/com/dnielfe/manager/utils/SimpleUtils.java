@@ -43,7 +43,7 @@ public class SimpleUtils {
   private static void search_file(String dir, String fileName, ArrayList<String> n) {
     File rootDir = new File(dir);
     String[] list = rootDir.list();
-    boolean root = AppPreferences.rootAccess();
+    boolean root = AppPreferences.getRootEnabled();
 
     if (list != null && rootDir.canRead()) {
       for (String aList : list) {
@@ -75,7 +75,7 @@ public class SimpleUtils {
 
   public static ArrayList<String> listFiles(String path, Context c) {
     ArrayList<String> mDirContent = new ArrayList<>();
-    boolean showhidden = AppPreferences.showHiddenFiles();
+    boolean showhidden = AppPreferences.getHiddenFiles();
 
     if (!mDirContent.isEmpty())
       mDirContent.clear();
@@ -94,7 +94,7 @@ public class SimpleUtils {
           mDirContent.add(path + "/" + aList);
         }
       }
-    } else if (AppPreferences.rootAccess()) {
+    } else if (AppPreferences.getRootEnabled()) {
       mDirContent = RootCommands.listFiles(file.getAbsolutePath(), showhidden);
     } else {
       Toast.makeText(c, c.getString(R.string.cantreadfolder), Toast.LENGTH_SHORT).show();
@@ -236,7 +236,7 @@ public class SimpleUtils {
           return true;
       }
 
-      if (AppPreferences.rootAccess()) {
+      if (AppPreferences.getRootEnabled()) {
         return RootCommands.createRootdir(folder);
       }
     }
@@ -270,7 +270,7 @@ public class SimpleUtils {
 
       if (target.exists())
         target.delete();
-    } else if (!target.delete() && AppPreferences.rootAccess()) {
+    } else if (!target.delete() && AppPreferences.getRootEnabled()) {
       RootCommands.deleteRootFileOrDir(target);
     }
   }

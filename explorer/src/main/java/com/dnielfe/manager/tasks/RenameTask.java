@@ -58,7 +58,7 @@ public final class RenameTask extends AsyncTask<String, Void, List<String>> {
       if (SimpleUtils.renameTarget(path + "/" + files[0], files[1])) {
         succes = true;
       } else {
-        if (AppPreferences.rootAccess()) {
+        if (AppPreferences.getRootEnabled()) {
           RootCommands.renameRootTarget(path, files[0], files[1]);
           succes = true;
         }

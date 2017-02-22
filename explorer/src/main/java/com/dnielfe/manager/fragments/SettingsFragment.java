@@ -33,8 +33,8 @@ public final class SettingsFragment extends PreferenceFragment {
       @Override
       public boolean onPreferenceChange(Preference preference, Object newValue) {
         final int chosenTheme = Integer.parseInt((String) newValue);
-        if (chosenTheme != AppPreferences.getDefaultTheme()) {
-          AppPreferences.setDefaultTheme(chosenTheme);
+        if (chosenTheme != AppPreferences.getTheme()) {
+          AppPreferences.setTheme(chosenTheme);
           ((SettingsActivity) getActivity()).proxyRestart();
           return true;
         }

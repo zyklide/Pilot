@@ -19,42 +19,42 @@ public final class AppPreferences {
   public static void updatePreferences(Context context) {
     mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
     mTheme = Integer.parseInt(mPrefs.getString("preference_theme", Integer.toString(R.style.ThemeLight)));
-    rootAccess();
+    getRootEnabled();
   }
 
-  public static boolean showThumbnail() {
-    return mPrefs.getBoolean("showpreview", true);
-  }
-
-  public static boolean showHiddenFiles() {
+  public static boolean getHiddenFiles() {
     return mPrefs.getBoolean("displayhiddenfiles", true);
   }
 
-  public static boolean rootAccess() {
-    return mPrefs.getBoolean("enablerootaccess", false) && RootTools.isAccessGiven();
+  public static boolean getThumbnails() {
+    return mPrefs.getBoolean("showpreview", true);
   }
 
-  public static boolean reverseListView() {
-    return mPrefs.getBoolean("reverseList", false);
-  }
-
-  public static String getDefaultDir() {
-    return mPrefs.getString("defaultdir", Environment.getExternalStorageDirectory().getPath());
-  }
-
-  public static int getListAppearance() {
+  public static int getViewMode() {
     return Integer.parseInt(mPrefs.getString("viewmode", "1"));
   }
 
-  public static int getSortType() {
+  public static int getSort() {
     return Integer.parseInt(mPrefs.getString("sort", "1"));
   }
 
-  public static int getDefaultTheme() {
+  public static boolean getReverseList() {
+    return mPrefs.getBoolean("reverseList", false);
+  }
+
+  public static int getTheme() {
     return mTheme;
   }
 
-  public static void setDefaultTheme(int theme) {
+  public static void setTheme(int theme) {
     mTheme = theme;
+  }
+
+  public static String getCustomPath() {
+    return mPrefs.getString("defaultdir", Environment.getExternalStorageDirectory().getPath());
+  }
+
+  public static boolean getRootEnabled() {
+    return mPrefs.getBoolean("enablerootaccess", false) && RootTools.isAccessGiven();
   }
 }
