@@ -28,7 +28,7 @@ public final class SettingsFragment extends PreferenceFragment {
   }
 
   private void init() {
-    final ListPreference theme = (ListPreference) findPreference("preference_theme");
+    final ListPreference theme = (ListPreference) findPreference("prefTheme");
     theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
       @Override
       public boolean onPreferenceChange(Preference preference, Object newValue) {

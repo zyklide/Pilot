@@ -3,17 +3,17 @@
   <PreferenceCategory android:title="@string/uisettings">
     <CheckBoxPreference
         android:defaultValue="true"
-        android:key="displayhiddenfiles"
+        android:key="prefHiddenFiles"
         android:title="@string/hiddenfiles"/>
     <CheckBoxPreference
         android:defaultValue="true"
-        android:key="showpreview"
+        android:key="prefThumbnails"
         android:title="@string/showpreview"/>
     <ListPreference
         android:defaultValue="1"
         android:entries="@array/viewentries"
         android:entryValues="@array/viewvalues"
-        android:key="viewmode"
+        android:key="prefViewMode"
         android:title="@string/viewmode"/>
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/sortpreferences">
@@ -21,11 +21,11 @@
         android:defaultValue="1"
         android:entries="@array/sortentries"
         android:entryValues="@array/sortvalues"
-        android:key="sort"
+        android:key="prefSort"
         android:title="@string/sort"/>
     <CheckBoxPreference
         android:defaultValue="false"
-        android:key="reverseList"
+        android:key="prefReverseList"
         android:title="@string/sort_reverselist"/>
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/advancedsettings">
@@ -33,15 +33,15 @@
         android:defaultValue="0"
         android:entries="@array/theme_entries"
         android:entryValues="@array/theme_values"
-        android:key="preference_theme"
+        android:key="prefTheme"
         android:title="@string/theme"/>
     <EditTextPreference
         android:dialogTitle="@string/defaultdir"
-        android:key="defaultdir"
+        android:key="prefCustomPath"
         android:title="@string/defaultdir"/>
     <CheckBoxPreference
         android:defaultValue="false"
-        android:key="enablerootaccess"
+        android:key="prefRootEnabled"
         android:title="@string/enable_root"/>
   </PreferenceCategory>
 </PreferenceScreen>

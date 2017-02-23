@@ -18,28 +18,28 @@ public final class AppPreferences {
 
   public static void updatePreferences(Context context) {
     mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-    mTheme = Integer.parseInt(mPrefs.getString("preference_theme", Integer.toString(R.style.ThemeLight)));
+    mTheme = Integer.parseInt(mPrefs.getString("prefTheme", Integer.toString(R.style.ThemeLight)));
     getRootEnabled();
   }
 
   public static boolean getHiddenFiles() {
-    return mPrefs.getBoolean("displayhiddenfiles", true);
+    return mPrefs.getBoolean("prefHiddenFiles", true);
   }
 
   public static boolean getThumbnails() {
-    return mPrefs.getBoolean("showpreview", true);
+    return mPrefs.getBoolean("prefThumbnails", true);
   }
 
   public static int getViewMode() {
-    return Integer.parseInt(mPrefs.getString("viewmode", "1"));
+    return Integer.parseInt(mPrefs.getString("prefViewMode", "1"));
   }
 
   public static int getSort() {
-    return Integer.parseInt(mPrefs.getString("sort", "1"));
+    return Integer.parseInt(mPrefs.getString("prefSort", "1"));
   }
 
   public static boolean getReverseList() {
-    return mPrefs.getBoolean("reverseList", false);
+    return mPrefs.getBoolean("prefReverseList", false);
   }
 
   public static int getTheme() {
@@ -51,10 +51,10 @@ public final class AppPreferences {
   }
 
   public static String getCustomPath() {
-    return mPrefs.getString("defaultdir", Environment.getExternalStorageDirectory().getPath());
+    return mPrefs.getString("prefCustomPath", Environment.getExternalStorageDirectory().getPath());
   }
 
   public static boolean getRootEnabled() {
-    return mPrefs.getBoolean("enablerootaccess", false) && RootTools.isAccessGiven();
+    return mPrefs.getBoolean("prefRootEnabled", false) && RootTools.isAccessGiven();
   }
 }
