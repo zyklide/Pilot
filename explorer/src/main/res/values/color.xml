@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <color name="color_primary">#3F51B5</color>
-  <color name="color_primary_dark">#303F9F</color>
+  <color name="actionBar">#3F51B5</color>
+  <color name="statusBar">#303F9F</color>
+  <color name="color_accent">#E91E63</color>
   <color name="gray">#aaa</color>
+  <color name="fabLabelLight">#616161</color>
+  <color name="textWhite">#FAFAFA</color>
 
   <!-- light theme -->
   <color name="light_bookmark_bg">#fbfbfb</color>

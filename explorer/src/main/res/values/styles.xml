@@ -4,8 +4,8 @@
     <item name="windowActionModeOverlay">true</item>
 
     <!-- android colors -->
-    <item name="colorPrimary">@color/color_primary</item>
-    <item name="colorPrimaryDark">@color/color_primary_dark</item>
+    <item name="colorPrimary">@color/actionBar</item>
+    <item name="colorPrimaryDark">@color/statusBar</item>
     <item name="android:windowBackground">@color/holo_light_window_background</item>
 
     <!-- custom colors -->
@@ -32,8 +32,8 @@
     <item name="windowActionModeOverlay">true</item>
 
     <!-- android colors -->
-    <item name="colorPrimary">@color/color_primary</item>
-    <item name="colorPrimaryDark">@color/color_primary_dark</item>
+    <item name="colorPrimary">@color/actionBar</item>
+    <item name="colorPrimaryDark">@color/statusBar</item>
     <item name="android:windowBackground">@color/holo_dark_window_background</item>
 
     <!-- custom colors -->
@@ -55,5 +55,9 @@
     <item name="action_bookmark">@drawable/holo_dark_ic_bookmark</item>
     <item name="action_delete">@drawable/holo_dark_action_delete</item>
     <item name="action_share">@drawable/holo_dark_action_share</item>
+  </style>
+  <style name="LabelStyle">
+    <item name="android:background">@drawable/fab_label_background</item>
+    <item name="android:textColor">@color/textWhite</item>
   </style>
 </resources>

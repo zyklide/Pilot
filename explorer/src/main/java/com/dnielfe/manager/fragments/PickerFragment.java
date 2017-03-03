@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dnielfe.manager.R;
-import com.melnykov.fab.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.io.File;
 
@@ -58,7 +58,7 @@ public final class PickerFragment extends AbstractBrowserFragment {
 
   @Override
   protected void initFab(View rootView) {
-    FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fabbutton);
+    FloatingActionsMenu fab = (FloatingActionsMenu) rootView.findViewById(R.id.fab);
     fab.setVisibility(View.GONE);
   }
 }

@@ -35,7 +35,7 @@ import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.tasks.PasteTaskExecutor;
 import com.dnielfe.manager.utils.ClipBoard;
 import com.dnielfe.manager.utils.SimpleUtils;
-import com.melnykov.fab.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -145,37 +145,28 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   }
 
   protected void initFab(View rootView) {
-    FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fabbutton);
-    fab.attachToListView(mListView);
-    fab.setOnClickListener(new View.OnClickListener() {
+    FloatingActionsMenu fab = (FloatingActionsMenu) rootView.findViewById(R.id.fab);
+    FloatingActionsMenu fab_file = (FloatingActionsMenu) rootView.findViewById(R.id.fab_a);
+    FloatingActionsMenu fab_folder = (FloatingActionsMenu) rootView.findViewById(R.id.fab_b);
+    fab_file.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        showMenu(view);
+        final DialogFragment dialog1 = new CreateFileDialog();
+        dialog1.show(fm, AbstractBrowserActivity.TAG_DIALOG);
       }
     });
-  }
-
-  private void showMenu(View v) {
-    PopupMenu popup = new PopupMenu(mActivity, v);
-    // this activity implements OnMenuItemClickListener
-    popup.setOnMenuItemClickListener(this);
-    popup.inflate(R.menu.fab_menu);
-    popup.show();
+    fab_folder.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        final DialogFragment dialog2 = new CreateFolderDialog();
+        dialog2.show(fm, AbstractBrowserActivity.TAG_DIALOG);
+      }
+    });
   }
 
   @Override
   public boolean onMenuItemClick(MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.createfile:
-        final DialogFragment dialog1 = new CreateFileDialog();
-        dialog1.show(fm, AbstractBrowserActivity.TAG_DIALOG);
-        return true;
-
-      case R.id.createfolder:
-        final DialogFragment dialog2 = new CreateFolderDialog();
-        dialog2.show(fm, AbstractBrowserActivity.TAG_DIALOG);
-        return true;
-
       default:
         return false;
     }
@@ -203,7 +194,6 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
     }
 
     mListAdapter.addFiles(path);
-
     mObserver = mObserverCache.getOrCreate(path);
 
     // add listener for FileObserver and start watching
@@ -227,8 +217,7 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
       case FileObserver.DELETE:
       case FileObserver.DELETE_SELF:
         sHandler.removeCallbacks(mLastRunnable);
-        sHandler.post(mLastRunnable =
-            new NavigateRunnable((AbstractBrowserActivity) getActivity(), path));
+        sHandler.post(mLastRunnable = new NavigateRunnable((AbstractBrowserActivity) getActivity(), path));
         break;
     }
   }
@@ -276,6 +265,7 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
       mActionController.finishActionMode();
     }
     navigateTo(path);
+
     // go to the top of the ListView
     mListView.setSelection(0);
   }
@@ -366,5 +356,4 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
     }
     return true;
   }
-
 }
