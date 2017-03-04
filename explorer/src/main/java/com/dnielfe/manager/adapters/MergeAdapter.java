@@ -30,14 +30,11 @@ public class MergeAdapter extends BaseAdapter implements SectionIndexer {
   public Object getItem(int position) {
     for (ListAdapter piece : pieces) {
       int size = piece.getCount();
-
       if (position < size) {
         return piece.getItem(position);
       }
-
       position -= size;
     }
-
     return null;
   }
 
@@ -45,29 +42,23 @@ public class MergeAdapter extends BaseAdapter implements SectionIndexer {
   public ListAdapter getAdapter(int position) {
     for (ListAdapter piece : pieces) {
       int size = piece.getCount();
-
       if (position < size) {
         return piece;
       }
-
       position -= size;
     }
-
     return null;
   }
 
   // how many items are in the data set represented by this adapter
   public int getCount() {
     int total = 0;
-
     for (ListAdapter piece : pieces) {
       total += piece.getCount();
     }
-
     if (total == 0 && noItemsText != null) {
       total = 1;
     }
-
     return total;
   }
 
@@ -75,13 +66,11 @@ public class MergeAdapter extends BaseAdapter implements SectionIndexer {
   @Override
   public int getViewTypeCount() {
     int total = 0;
-
     for (ListAdapter piece : pieces) {
       total += piece.getViewTypeCount();
     }
-
-    return Math.max(total, 1);
     // required for setListAdapter before content add
+    return Math.max(total, 1);
   }
 
   // get the type of view that will be created by getView for the specified item
@@ -175,10 +164,8 @@ public class MergeAdapter extends BaseAdapter implements SectionIndexer {
       int size = piece.getCount();
       if (position < size) {
         if (piece instanceof SectionIndexer) {
-          return (section + ((SectionIndexer) piece)
-              .getSectionForPosition(position));
+          return (section + ((SectionIndexer) piece).getSectionForPosition(position));
         }
-
         return 0;
       } else {
         if (piece instanceof SectionIndexer) {

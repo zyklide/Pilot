@@ -170,8 +170,7 @@ public final class ActionModeController {
           intent.setType("*/*");
           intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
           mode.finish();
-          mActivity.startActivity(Intent.createChooser(intent,
-              mActivity.getString(R.string.share)));
+          mActivity.startActivity(Intent.createChooser(intent, mActivity.getString(R.string.share)));
           return true;
 
         case R.id.actionshortcut:

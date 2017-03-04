@@ -20,8 +20,7 @@ public final class PickerActivity extends AbstractBrowserActivity {
 
   @Override
   public PickerFragment getCurrentBrowserFragment() {
-    return (PickerFragment) getFragmentManager()
-        .findFragmentByTag(PickerFragment.TAG);
+    return (PickerFragment) getFragmentManager().findFragmentByTag(PickerFragment.TAG);
   }
 
   private void initBrowserFragment() {

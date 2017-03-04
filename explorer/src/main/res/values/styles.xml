@@ -11,7 +11,7 @@
     <item name="android:windowBackground">@color/light_window_background</item>
 
     <!-- custom colors -->
-    <item name="bookmark_windoBackground">@color/light_bookmark_bg</item>
+    <item name="bookmark_windowBackground">@color/light_bookmark_bg</item>
 
     <!-- main drawables -->
     <item name="fab_drawable">@drawable/dark_action_new</item>
@@ -41,7 +41,7 @@
     <item name="android:windowBackground">@color/dark_window_background</item>
 
     <!-- custom colors -->
-    <item name="bookmark_windoBackground">@color/dark_bookmark_bg</item>
+    <item name="bookmark_windowBackground">@color/dark_bookmark_bg</item>
 
     <!-- main drawables -->
     <item name="fab_drawable">@drawable/light_action_new</item>

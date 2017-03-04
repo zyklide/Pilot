@@ -18,7 +18,7 @@
   <attr name="ic_drawer" format="reference"/>
 
   <!-- background -->
-  <attr name="bookmark_windoBackground" format="reference"/>
+  <attr name="bookmark_windowBackground" format="reference"/>
   <attr name="fab_drawable" format="reference"/>
 
   <!-- theme ID -->
