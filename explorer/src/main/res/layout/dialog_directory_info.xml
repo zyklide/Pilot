@@ -201,5 +201,4 @@
         android:textIsSelectable="false"
         tools:text="9 GiB (86%)"/>
   </TableRow>
-
 </TableLayout>

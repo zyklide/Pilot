@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
   <!-- PageIndicator defaults -->
   <bool name="default_underline_indicator_fades">true</bool>
   <integer name="default_underline_indicator_fade_delay">300</integer>

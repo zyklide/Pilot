@@ -30,8 +30,8 @@
       android:layout_height="wrap_content"
       android:layout_gravity="bottom|right"
       android:layout_margin="16dp"
-      app:fab_addButtonColorNormal="@color/actionBar"
-      app:fab_addButtonColorPressed="@color/statusBar"
+      app:fab_addButtonColorNormal="@color/primary"
+      app:fab_addButtonColorPressed="@color/primary_dark"
       app:fab_labelStyle="@style/LabelStyle">
 
     <com.getbase.floatingactionbutton.FloatingActionButton
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:fab_colorNormal="@color/color_accent"
+        app:fab_colorNormal="@color/accent"
         app:fab_icon="@drawable/dark_action_search"
         app:fab_title="Create Folder"/>
 
@@ -47,7 +47,7 @@
         android:id="@+id/fab_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fab_colorNormal="@color/color_accent"
+        app:fab_colorNormal="@color/accent"
         app:fab_icon="@drawable/dark_action_search"
         app:fab_title="Create File"/>
   </com.getbase.floatingactionbutton.FloatingActionsMenu>

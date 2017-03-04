@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-  <!-- Main content view -->
-
+  <!-- main content view -->
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -30,8 +29,7 @@
         android:layout_height="match_parent"/>
   </LinearLayout>
 
-  <!-- Navigation drawer -->
-
+  <!-- navigation drawer -->
   <ListView
       android:id="@+id/left_drawer"
       android:layout_width="@dimen/drawer_width"
@@ -39,5 +37,4 @@
       android:layout_gravity="start"
       android:background="?android:attr/windowBackground"
       android:divider="@null"/>
-
 </android.support.v4.widget.DrawerLayout>

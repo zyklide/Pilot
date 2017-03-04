@@ -10,5 +10,4 @@
       android:layout_height="25dp"
       android:layout_gravity="center_vertical"
       android:background="?android:attr/dividerVertical"/>
-
 </LinearLayout>

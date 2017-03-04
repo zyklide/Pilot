@@ -152,6 +152,5 @@
           android:textIsSelectable="false"
           android:textSize="13sp"/>
     </LinearLayout>
-
   </LinearLayout>
 </ScrollView>

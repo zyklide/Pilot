@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
   <style name="ThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="windowActionModeOverlay">true</item>
 
     <!-- android colors -->
-    <item name="colorPrimary">@color/actionBar</item>
-    <item name="colorPrimaryDark">@color/statusBar</item>
-    <item name="android:windowBackground">@color/holo_light_window_background</item>
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorPrimaryDark">@color/primary_dark</item>
+    <item name="android:windowBackground">@color/light_window_background</item>
 
     <!-- custom colors -->
     <item name="bookmark_windoBackground">@color/light_bookmark_bg</item>
@@ -23,18 +24,19 @@
     <item name="action_cut">@drawable/light_action_cut</item>
     <item name="action_edit">@drawable/light_action_edit</item>
     <item name="action_multi">@drawable/light_action_select_all</item>
-    <item name="action_zip">@drawable/light_ic_storage</item>
-    <item name="action_bookmark">@drawable/light_ic_bookmark</item>
+    <item name="action_zip">@drawable/light_action_storage</item>
+    <item name="action_bookmark">@drawable/light_action_bookmark</item>
     <item name="action_delete">@drawable/light_action_delete</item>
     <item name="action_share">@drawable/light_action_share</item>
   </style>
+
   <style name="ThemeDark" parent="Theme.AppCompat.NoActionBar">
     <item name="windowActionModeOverlay">true</item>
 
     <!-- android colors -->
-    <item name="colorPrimary">@color/actionBar</item>
-    <item name="colorPrimaryDark">@color/statusBar</item>
-    <item name="android:windowBackground">@color/holo_dark_window_background</item>
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorPrimaryDark">@color/primary_dark</item>
+    <item name="android:windowBackground">@color/dark_window_background</item>
 
     <!-- custom colors -->
     <item name="bookmark_windoBackground">@color/dark_bookmark_bg</item>
@@ -51,13 +53,14 @@
     <item name="action_cut">@drawable/dark_action_cut</item>
     <item name="action_edit">@drawable/dark_action_edit</item>
     <item name="action_multi">@drawable/dark_action_select_all</item>
-    <item name="action_zip">@drawable/dark_ic_storage</item>
-    <item name="action_bookmark">@drawable/dark_ic_bookmark</item>
+    <item name="action_zip">@drawable/dark_action_storage</item>
+    <item name="action_bookmark">@drawable/dark_action_bookmark</item>
     <item name="action_delete">@drawable/dark_action_delete</item>
     <item name="action_share">@drawable/dark_action_share</item>
   </style>
+
   <style name="LabelStyle">
     <item name="android:background">@drawable/fab_label_background</item>
-    <item name="android:textColor">@color/textWhite</item>
+    <item name="android:textColor">@color/text_white</item>
   </style>
 </resources>
