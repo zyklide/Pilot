@@ -22,13 +22,33 @@
       android:scrollbarStyle="outsideOverlay"
       android:smoothScrollbar="true"/>
 
-  <!-- If FAB is moved to activity, PickerFragment should inflate this layout instead -->
-  <com.melnykov.fab.FloatingActionButton
-      android:id="@+id/fabbutton"
+  <com.getbase.floatingactionbutton.FloatingActionsMenu
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/fab"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="bottom|right"
-      android:layout_margin="20dp"
-      android:src="?attr/fab_drawable"
-      fab:fab_colorNormal="?colorAccent"/>
+      android:layout_margin="16dp"
+      app:fab_addButtonColorNormal="@color/actionBar"
+      app:fab_addButtonColorPressed="@color/statusBar"
+      app:fab_labelStyle="@style/LabelStyle">
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:fab_colorNormal="@color/color_accent"
+        app:fab_icon="@drawable/holo_dark_action_search"
+        app:fab_title="Create Folder"/>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorNormal="@color/color_accent"
+        app:fab_icon="@drawable/holo_dark_action_search"
+        app:fab_title="Create File"/>
+  </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </FrameLayout>

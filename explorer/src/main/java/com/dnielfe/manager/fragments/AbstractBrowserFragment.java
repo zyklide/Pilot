@@ -35,7 +35,7 @@ import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.tasks.PasteTaskExecutor;
 import com.dnielfe.manager.utils.ClipBoard;
 import com.dnielfe.manager.utils.SimpleUtils;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -145,9 +145,8 @@ public abstract class AbstractBrowserFragment extends UserVisibleHintFragment im
   }
 
   protected void initFab(View rootView) {
-    FloatingActionsMenu fab = (FloatingActionsMenu) rootView.findViewById(R.id.fab);
-    FloatingActionsMenu fab_file = (FloatingActionsMenu) rootView.findViewById(R.id.fab_a);
-    FloatingActionsMenu fab_folder = (FloatingActionsMenu) rootView.findViewById(R.id.fab_b);
+    FloatingActionButton fab_file = (FloatingActionButton) rootView.findViewById(R.id.fab_a);
+    FloatingActionButton fab_folder = (FloatingActionButton) rootView.findViewById(R.id.fab_b);
     fab_file.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
