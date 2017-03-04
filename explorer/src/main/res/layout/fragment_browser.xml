@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:fab_colorNormal="@color/color_accent"
-        app:fab_icon="@drawable/holo_dark_action_search"
+        app:fab_icon="@drawable/dark_action_search"
         app:fab_title="Create Folder"/>
 
     <com.getbase.floatingactionbutton.FloatingActionButton
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fab_colorNormal="@color/color_accent"
-        app:fab_icon="@drawable/holo_dark_action_search"
+        app:fab_icon="@drawable/dark_action_search"
         app:fab_title="Create File"/>
   </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </FrameLayout>

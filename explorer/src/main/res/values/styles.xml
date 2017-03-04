@@ -12,21 +12,21 @@
     <item name="bookmark_windoBackground">@color/light_bookmark_bg</item>
 
     <!-- main drawables -->
-    <item name="fab_drawable">@drawable/holo_dark_ic_action_new</item>
-    <item name="action_info">@drawable/holo_light_action_info</item>
-    <item name="action_paste">@drawable/actionpaste</item>
-    <item name="action_remove">@drawable/holo_light_action_remove</item>
-    <item name="action_search">@drawable/holo_light_action_search</item>
+    <item name="fab_drawable">@drawable/dark_action_new</item>
+    <item name="action_info">@drawable/light_action_info</item>
+    <item name="action_paste">@drawable/light_action_paste</item>
+    <item name="action_remove">@drawable/light_action_remove</item>
+    <item name="action_search">@drawable/light_action_search</item>
 
     <!-- action mode drawables -->
-    <item name="action_copy">@drawable/holo_light_action_copy</item>
-    <item name="action_cut">@drawable/holo_light_action_cut</item>
-    <item name="action_edit">@drawable/holo_light_action_edit</item>
-    <item name="action_multi">@drawable/holo_light_action_select_all</item>
-    <item name="action_zip">@drawable/holo_light_ic_storage</item>
-    <item name="action_bookmark">@drawable/holo_light_ic_bookmark</item>
-    <item name="action_delete">@drawable/holo_light_action_delete</item>
-    <item name="action_share">@drawable/holo_light_action_share</item>
+    <item name="action_copy">@drawable/light_action_copy</item>
+    <item name="action_cut">@drawable/light_action_cut</item>
+    <item name="action_edit">@drawable/light_action_edit</item>
+    <item name="action_multi">@drawable/light_action_select_all</item>
+    <item name="action_zip">@drawable/light_ic_storage</item>
+    <item name="action_bookmark">@drawable/light_ic_bookmark</item>
+    <item name="action_delete">@drawable/light_action_delete</item>
+    <item name="action_share">@drawable/light_action_share</item>
   </style>
   <style name="ThemeDark" parent="Theme.AppCompat.NoActionBar">
     <item name="windowActionModeOverlay">true</item>
@@ -40,21 +40,21 @@
     <item name="bookmark_windoBackground">@color/dark_bookmark_bg</item>
 
     <!-- main drawables -->
-    <item name="fab_drawable">@drawable/holo_light_ic_action_new</item>
-    <item name="action_info">@drawable/holo_dark_action_info</item>
-    <item name="action_paste">@drawable/actionpaste</item>
-    <item name="action_remove">@drawable/holo_dark_action_remove</item>
-    <item name="action_search">@drawable/holo_dark_action_search</item>
+    <item name="fab_drawable">@drawable/light_action_new</item>
+    <item name="action_info">@drawable/dark_action_info</item>
+    <item name="action_paste">@drawable/light_action_paste</item>
+    <item name="action_remove">@drawable/dark_action_remove</item>
+    <item name="action_search">@drawable/dark_action_search</item>
 
     <!-- action mode drawables -->
-    <item name="action_copy">@drawable/holo_dark_action_copy</item>
-    <item name="action_cut">@drawable/holo_dark_action_cut</item>
-    <item name="action_edit">@drawable/holo_dark_action_edit</item>
-    <item name="action_multi">@drawable/holo_dark_ic_action_select_all</item>
-    <item name="action_zip">@drawable/holo_dark_ic_storage</item>
-    <item name="action_bookmark">@drawable/holo_dark_ic_bookmark</item>
-    <item name="action_delete">@drawable/holo_dark_action_delete</item>
-    <item name="action_share">@drawable/holo_dark_action_share</item>
+    <item name="action_copy">@drawable/dark_action_copy</item>
+    <item name="action_cut">@drawable/dark_action_cut</item>
+    <item name="action_edit">@drawable/dark_action_edit</item>
+    <item name="action_multi">@drawable/dark_action_select_all</item>
+    <item name="action_zip">@drawable/dark_ic_storage</item>
+    <item name="action_bookmark">@drawable/dark_ic_bookmark</item>
+    <item name="action_delete">@drawable/dark_action_delete</item>
+    <item name="action_share">@drawable/dark_action_share</item>
   </style>
   <style name="LabelStyle">
     <item name="android:background">@drawable/fab_label_background</item>
