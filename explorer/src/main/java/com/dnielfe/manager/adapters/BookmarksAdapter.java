@@ -20,13 +20,12 @@ import java.util.List;
 public class BookmarksAdapter extends BaseAdapter {
 
   private final LayoutInflater mLayoutInflater;
-  private List<Bookmark> mBookmarksList = new ArrayList<>();
   private BookmarksHelper db;
+  private List<Bookmark> mBookmarksList = new ArrayList<>();
 
   public BookmarksAdapter(Context context) {
     mLayoutInflater = LayoutInflater.from(context);
     db = new BookmarksHelper(context);
-
     mBookmarksList = db.getAllBooks();
   }
 
@@ -62,11 +61,11 @@ public class BookmarksAdapter extends BaseAdapter {
     updateList();
   }
 
-  // TODO: find a better solution for refreshing ListView
+  // TODO find a better solution for refreshing the ListView
   private void updateList() {
-    if (!mBookmarksList.isEmpty())
+    if (!mBookmarksList.isEmpty()) {
       mBookmarksList.clear();
-
+    }
     mBookmarksList = db.getAllBooks();
     notifyDataSetChanged();
   }

@@ -70,7 +70,6 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
   public void onPause() {
     super.onPause();
     final Fragment f = fm.findFragmentByTag(TAG_DIALOG);
-
     if (f != null) {
       fm.beginTransaction().remove(f).commit();
       fm.executePendingTransactions();
@@ -80,7 +79,6 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
   @Override
   public void onDestroy() {
     super.onDestroy();
-
     if (mNavigation != null) {
       mNavigation.removeOnNavigateListener(this);
     }
@@ -166,8 +164,7 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
           // handle menu items
           switch ((int) mMergeAdapter.getItemId(position)) {
             case 0:
-              Intent intent2 = new Intent(AbstractBrowserActivity.this,
-                  SettingsActivity.class);
+              Intent intent2 = new Intent(AbstractBrowserActivity.this, SettingsActivity.class);
               startActivity(intent2);
               break;
             case 1:
@@ -200,7 +197,6 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
           mDrawerLayout.openDrawer(mDrawer);
         }
         return true;
-
       default:
         return super.onOptionsItemSelected(item);
     }

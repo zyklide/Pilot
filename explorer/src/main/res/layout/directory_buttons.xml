@@ -3,7 +3,7 @@
     android:id="@+id/scroll_text"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_height"
-    android:background="?colorPrimary"
+    android:background="@color/primary"
     android:fillViewport="true"
     android:scrollbars="none">
 

@@ -7,6 +7,7 @@
     <!-- android colors -->
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primary_dark</item>
+    <item name="colorAccent">@color/accent</item>
     <item name="android:windowBackground">@color/light_window_background</item>
 
     <!-- custom colors -->
@@ -36,6 +37,7 @@
     <!-- android colors -->
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primary_dark</item>
+    <item name="colorAccent">@color/accent</item>
     <item name="android:windowBackground">@color/dark_window_background</item>
 
     <!-- custom colors -->

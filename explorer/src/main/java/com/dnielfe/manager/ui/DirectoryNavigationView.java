@@ -37,14 +37,13 @@ public class DirectoryNavigationView {
     File currentDirectory = new File(path);
     String dir = "";
 
-    HorizontalScrollView scrolltext = (HorizontalScrollView) mActivity
-        .findViewById(R.id.scroll_text);
+    HorizontalScrollView scrolltext = (HorizontalScrollView) mActivity.findViewById(R.id.scroll_text);
     LinearLayout mView = (LinearLayout) mActivity.findViewById(R.id.directory_buttons);
     mView.removeAllViews();
 
     String[] parts = currentDirectory.getAbsolutePath().split("/");
 
-    // Add home view separately
+    // add home view separately
     TextView t0 = new TextView(mActivity, null, android.R.attr.actionButtonStyle);
     t0.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT,
         Gravity.CENTER_VERTICAL));
@@ -62,7 +61,7 @@ public class DirectoryNavigationView {
 
     mView.addView(t0);
 
-    // Add other buttons
+    // add other buttons
     for (int i = 1; i < parts.length; i++) {
       dir += "/" + parts[i];
 

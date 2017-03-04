@@ -50,9 +50,9 @@ public class BrowserListAdapter extends BaseAdapter {
       mViewHolder = (ViewHolder) convertView.getTag();
     }
     if (AppPreferences.getViewMode() > 0) {
-      mViewHolder.dateview.setVisibility(TextView.VISIBLE);
+      mViewHolder.dateView.setVisibility(TextView.VISIBLE);
     } else {
-      mViewHolder.dateview.setVisibility(TextView.GONE);
+      mViewHolder.dateView.setVisibility(TextView.GONE);
     }
 
     // get icon
@@ -70,20 +70,20 @@ public class BrowserListAdapter extends BaseAdapter {
       mViewHolder.bottomView.setText(numItems + mResources.getString(R.string.files));
     }
     mViewHolder.topView.setText(file.getName());
-    mViewHolder.dateview.setText(df.format(file.lastModified()));
+    mViewHolder.dateView.setText(df.format(file.lastModified()));
     return convertView;
   }
 
   private static class ViewHolder {
     final TextView topView;
     final TextView bottomView;
-    final TextView dateview;
+    final TextView dateView;
     final ImageView icon;
 
     ViewHolder(View view) {
       topView = (TextView) view.findViewById(R.id.top_view);
       bottomView = (TextView) view.findViewById(R.id.bottom_view);
-      dateview = (TextView) view.findViewById(R.id.dateview);
+      dateView = (TextView) view.findViewById(R.id.date_view);
       icon = (ImageView) view.findViewById(R.id.row_image);
     }
   }
