@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
 import com.dnielfe.manager.utils.AppPreferences;
-import com.dnielfe.manager.utils.RootCommands;
+import com.dnielfe.manager.utils.RootUtils;
 import com.dnielfe.manager.utils.SimpleUtils;
 
 import java.lang.ref.WeakReference;
@@ -59,7 +59,7 @@ public final class RenameTask extends AsyncTask<String, Void, List<String>> {
         succes = true;
       } else {
         if (AppPreferences.getRootEnabled()) {
-          RootCommands.renameRootTarget(path, files[0], files[1]);
+          RootUtils.renameRootTarget(path, files[0], files[1]);
           succes = true;
         }
       }

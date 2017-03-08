@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 
+import com.dnielfe.manager.models.Bookmark;
+
 import java.util.LinkedList;
 import java.util.List;
 

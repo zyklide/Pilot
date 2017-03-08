@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.tasks.GroupOwnerTask;
-import com.dnielfe.manager.utils.RootCommands;
+import com.dnielfe.manager.utils.RootUtils;
 
 import java.io.File;
 
@@ -24,7 +24,7 @@ public final class GroupOwnerDialog extends DialogFragment {
   public static DialogFragment instantiate(File file1) {
     file = file1;
 
-    String[] mFileInfo = RootCommands.getFileProperties(file1);
+    String[] mFileInfo = RootUtils.getFileProperties(file1);
     if (mFileInfo != null) {
       oldowner = mFileInfo[1];
       oldgroup = mFileInfo[2];

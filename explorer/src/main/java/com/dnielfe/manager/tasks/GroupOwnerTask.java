@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.utils.RootCommands;
+import com.dnielfe.manager.utils.RootUtils;
 
 import java.io.File;
 
@@ -22,7 +22,7 @@ public class GroupOwnerTask extends AsyncTask<File, Void, Boolean> {
 
   @Override
   protected Boolean doInBackground(final File... params) {
-    return RootCommands.changeGroupOwner(params[0], owner, group);
+    return RootUtils.changeGroupOwner(params[0], owner, group);
   }
 
   @Override

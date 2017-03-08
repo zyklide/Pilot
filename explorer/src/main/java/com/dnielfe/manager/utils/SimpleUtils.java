@@ -39,7 +39,7 @@ public class SimpleUtils {
   private static final BigInteger GB_BI = KB_BI.multiply(MB_BI);
   private static final BigInteger TB_BI = KB_BI.multiply(GB_BI);
 
-  // TODO: fix search with root
+  // TODO fix search with root
   private static void search_file(String dir, String fileName, ArrayList<String> n) {
     File rootDir = new File(dir);
     String[] list = rootDir.list();
@@ -55,12 +55,11 @@ public class SimpleUtils {
         } else if (check.isDirectory()) {
           if (name.toLowerCase().contains(fileName.toLowerCase())) {
             n.add(check.getPath());
-            // change this!
+            // TODO change this
           } else if (check.canRead() && !dir.equals("/")) {
             search_file(check.getAbsolutePath(), fileName, n);
           } else if (!check.canRead() && root) {
-            ArrayList<String> al = RootCommands.findFiles(check.getAbsolutePath(), fileName);
-
+            ArrayList<String> al = RootUtils.findFiles(check.getAbsolutePath(), fileName);
             for (String items : al) {
               n.add(items);
             }
@@ -69,7 +68,7 @@ public class SimpleUtils {
       }
     } else {
       if (root)
-        n.addAll(RootCommands.findFiles(dir, fileName));
+        n.addAll(RootUtils.findFiles(dir, fileName));
     }
   }
 
@@ -95,7 +94,7 @@ public class SimpleUtils {
         }
       }
     } else if (AppPreferences.getRootEnabled()) {
-      mDirContent = RootCommands.listFiles(file.getAbsolutePath(), showhidden);
+      mDirContent = RootUtils.listFiles(file.getAbsolutePath(), showhidden);
     } else {
       Toast.makeText(c, c.getString(R.string.cantreadfolder), Toast.LENGTH_SHORT).show();
     }
@@ -108,7 +107,7 @@ public class SimpleUtils {
     }
   }
 
-  // TODO: fix copy to sdcard root
+  // TODO fix copy to sdcard root
   public static boolean copyFile(final File source, final File target, Context context) {
     FileInputStream inStream = null;
     OutputStream outStream = null;
@@ -154,7 +153,7 @@ public class SimpleUtils {
             outStream.write(buffer, 0, bytesRead);
           }
         } else {
-          RootCommands.moveCopyRoot(source.getAbsolutePath(), target.getAbsolutePath());
+          RootUtils.moveCopyRoot(source.getAbsolutePath(), target.getAbsolutePath());
         }
       }
     } catch (Exception e) {
@@ -237,7 +236,7 @@ public class SimpleUtils {
       }
 
       if (AppPreferences.getRootEnabled()) {
-        return RootCommands.createRootdir(folder);
+        return RootUtils.createRootdir(folder);
       }
     }
 
@@ -271,7 +270,7 @@ public class SimpleUtils {
       if (target.exists())
         target.delete();
     } else if (!target.delete() && AppPreferences.getRootEnabled()) {
-      RootCommands.deleteRootFileOrDir(target);
+      RootUtils.deleteRootFileOrDir(target);
     }
   }
 

@@ -62,8 +62,9 @@ public final class ExtractionTask extends AsyncTask<File, Void, List<String>> {
     }
 
     if (files[1].canRead()) {
-      for (File file : files[1].listFiles())
+      for (File file : files[1].listFiles()) {
         MediaStoreUtils.addFileToMediaStore(file.getPath(), activity);
+      }
     }
     return failed;
   }

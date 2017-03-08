@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.adapters.BrowserTabsAdapter;
-import com.dnielfe.manager.utils.Permissions;
-import com.dnielfe.manager.utils.RootCommands;
+import com.dnielfe.manager.models.Permissions;
+import com.dnielfe.manager.utils.RootUtils;
 import com.dnielfe.manager.utils.SimpleUtils;
 import com.dnielfe.manager.utils.StatFsCompat;
 import com.stericson.RootTools.RootTools;
@@ -95,7 +95,7 @@ public final class DirectoryInfoDialog extends DialogFragment {
       String[] permission = null;
       String perm;
       if (RootTools.isAccessGiven()) {
-        permission = RootCommands.getFileProperties(params[0]);
+        permission = RootUtils.getFileProperties(params[0]);
       }
       perm = permission != null ? permission[0] : Permissions.getBasicPermission(params[0]);
       return new PartitionInfo(path, perm, valueTotal, statFs.getBlockSizeLong(), statFs.getFreeBytes(), valueUsed);

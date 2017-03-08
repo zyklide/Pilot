@@ -1,4 +1,4 @@
-package com.dnielfe.manager.utils;
+package com.dnielfe.manager.models;
 
 import java.io.File;
 import java.io.Serializable;

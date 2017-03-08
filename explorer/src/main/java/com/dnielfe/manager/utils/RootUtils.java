@@ -1,5 +1,6 @@
 package com.dnielfe.manager.utils;
 
+import com.dnielfe.manager.models.Permissions;
 import com.stericson.RootShell.RootShell;
 import com.stericson.RootShell.execution.Command;
 import com.stericson.RootShell.execution.Shell;
@@ -13,9 +14,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class RootCommands {
+public class RootUtils {
 
-  private RootCommands() {
+  private RootUtils() {
   }
 
   private static final String UNIX_ESCAPE_EXPRESSION = "(\\(|\\)|\\[|\\]|\\s|\'|\"|`|\\{|\\}|&|\\\\|\\?)";

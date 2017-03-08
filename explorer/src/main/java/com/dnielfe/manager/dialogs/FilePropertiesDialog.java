@@ -20,8 +20,8 @@ import android.widget.Toast;
 import com.dnielfe.manager.R;
 import com.dnielfe.manager.utils.AppPreferences;
 import com.dnielfe.manager.ui.PageIndicator;
-import com.dnielfe.manager.utils.Permissions;
-import com.dnielfe.manager.utils.RootCommands;
+import com.dnielfe.manager.models.Permissions;
+import com.dnielfe.manager.utils.RootUtils;
 import com.dnielfe.manager.utils.SimpleUtils;
 
 import java.io.File;
@@ -337,7 +337,7 @@ public final class FilePropertiesDialog extends DialogFragment {
 
       @Override
       protected Boolean doInBackground(final File... params) {
-        return RootCommands.applyPermissions(params[0], this.target);
+        return RootUtils.applyPermissions(params[0], this.target);
       }
 
       @Override
@@ -352,7 +352,7 @@ public final class FilePropertiesDialog extends DialogFragment {
       String[] mFileInfo = null;
 
       if (AppPreferences.getRootEnabled())
-        mFileInfo = RootCommands.getFileProperties(file);
+        mFileInfo = RootUtils.getFileProperties(file);
 
       if (mFileInfo != null) {
         mOwner.setText(mFileInfo[1]);

@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dnielfe.manager.R;
-import com.dnielfe.manager.utils.Bookmark;
+import com.dnielfe.manager.models.Bookmark;
 import com.dnielfe.manager.utils.BookmarksHelper;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.dnielfe.manager.utils;
+package com.dnielfe.manager.models;
 
 public class Bookmark {
 
