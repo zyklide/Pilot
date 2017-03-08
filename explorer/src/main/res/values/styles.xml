@@ -29,13 +29,6 @@
     <item name="action_bookmark">@drawable/light_action_bookmark</item>
     <item name="action_delete">@drawable/light_action_delete</item>
     <item name="action_share">@drawable/light_action_share</item>
-
-    <item name="activated_button"
-          android:state_activated="true"
-        android:drawable="@color/primary"/>
-    <item name="pressed_button"
-          android:state_pressed="true"
-          android:drawable="@color/primary_dark" />
   </style>
 
   <style name="ThemeDark" parent="Theme.AppCompat.NoActionBar">
