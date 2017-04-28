@@ -4,6 +4,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
@@ -58,6 +60,13 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_browser);
+
+    File f = new File("/storage/0000-0000");
+    if(f.exists() && f.isDirectory() && Build.VERSION.SDK_INT >= 21) {
+      Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+      intent.setType("*/*");
+      startActivityForResult(intent, 42);
+    }
 
     checkPermissions();
     initRequiredComponents();
@@ -249,5 +258,12 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
+  }
+
+  public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+    if (resultCode == 42 && Build.VERSION.SDK_INT >= 19) {
+      Uri treeUri = resultData.getData();
+      getContentResolver().takePersistableUriPermission(treeUri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+    }
   }
 }
