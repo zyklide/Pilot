@@ -64,7 +64,6 @@ public abstract class AbstractBrowserActivity extends ThemableActivity implement
     File f = new File("/storage/0000-0000");
     if(f.exists() && f.isDirectory() && Build.VERSION.SDK_INT >= 21) {
       Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-      intent.setType("*/*");
       startActivityForResult(intent, 42);
     }
 
